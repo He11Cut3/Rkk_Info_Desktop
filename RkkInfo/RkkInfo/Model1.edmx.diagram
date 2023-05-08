@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7e549e349d64499cb7b705a195db5022" Name="Diagram1">
+        <EntityTypeShape EntityType="RkkInfo_dbModel.RkkInfo_Branch" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RkkInfo_dbModel.RkkInfo_Dismissal" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RkkInfo_dbModel.RkkInfo_Employees" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="RkkInfo_dbModel.RkkInfo_Files" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RkkInfo_dbModel.RkkInfo_Jobs_Opening" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="RkkInfo_dbModel.RkkInfo_Jobs_Vacancy" Width="1.5" PointX="0.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RkkInfo_dbModel.RkkInfo_Main" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RkkInfo_dbModel.RkkInfo_Users" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RkkInfo_dbModel.RkkInfo_Vacation" Width="1.5" PointX="0.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RkkInfo_dbModel.sysdiagram" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="RkkInfo_dbModel.FK_RkkInfo_Main_RkkInfo_Branch" ManuallyRouted="false" />
+        <AssociationConnector Association="RkkInfo_dbModel.FK_RkkInfo_Main_RkkInfo_Dismissal" ManuallyRouted="false" />
+        <AssociationConnector Association="RkkInfo_dbModel.FK_RkkInfo_Main_RkkInfo_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="RkkInfo_dbModel.FK_RkkInfo_Main_RkkInfo_Files" ManuallyRouted="false" />
+        <AssociationConnector Association="RkkInfo_dbModel.FK_RkkInfo_Main_RkkInfo_Jobs_Opening" ManuallyRouted="false" />
+        <AssociationConnector Association="RkkInfo_dbModel.FK_RkkInfo_Main_RkkInfo_Jobs_Vacancy" ManuallyRouted="false" />
+        <AssociationConnector Association="RkkInfo_dbModel.FK_RkkInfo_Main_RkkInfo_Vacation" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

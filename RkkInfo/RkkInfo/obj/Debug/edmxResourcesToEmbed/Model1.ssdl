@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище RkkInfo_dbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="RkkInfo_Branch">
+    <Key>
+      <PropertyRef Name="RkkInfo_Branch_id" />
+    </Key>
+    <Property Name="RkkInfo_Branch_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RkkInfo_Branch_Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RkkInfo_Dismissal">
+    <Key>
+      <PropertyRef Name="RkkInfo_Dismissal_id" />
+    </Key>
+    <Property Name="RkkInfo_Dismissal_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RkkInfo_Dismissal_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Dismissal_First_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Dismissal_Last_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Dismissal_Position" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Dismissal_Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Dismissal_Files" Type="varbinary(max)" />
+    <Property Name="RkkInfo_Dismissal_Status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RkkInfo_Employees">
+    <Key>
+      <PropertyRef Name="RkkInfo_Employees_id" />
+    </Key>
+    <Property Name="RkkInfo_Employees_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RkkInfo_Employees_First_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Employees_Last_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Employees_Position" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Employees_Department" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Employees_Start_Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Employees_Is_Active" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RkkInfo_Files">
+    <Key>
+      <PropertyRef Name="RkkInfo_Files_id" />
+    </Key>
+    <Property Name="RkkInfo_Files_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RkkInfo_Files_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Files_Data" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Files_Files" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="RkkInfo_Jobs_Opening">
+    <Key>
+      <PropertyRef Name="RkkInfo_Jobs_Opening_id" />
+    </Key>
+    <Property Name="RkkInfo_Jobs_Opening_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RkkInfo_Jobs_Opening_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Jobs_Opening_Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Jobs_Opening_Files" Type="varbinary(max)" />
+    <Property Name="RkkInfo_Jobs_Opening_Status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RkkInfo_Jobs_Vacancy">
+    <Key>
+      <PropertyRef Name="RkkInfo_Jobs_Vacancy_id" />
+    </Key>
+    <Property Name="RkkInfo_Jobs_Vacancy_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RkkInfo_Jobs_Vacancy_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Jobs_Vacancy_First_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Jobs_Vacancy_Last_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Jobs_Vacancy_Position" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Jobs_Vacancy_Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Jobs_Vacancy_Files" Type="varbinary(max)" />
+    <Property Name="RkkInfo_Jobs_Vacancy_Status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RkkInfo_Main">
+    <Key>
+      <PropertyRef Name="RkkInfo_Main_id" />
+    </Key>
+    <Property Name="RkkInfo_Main_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RkkInfo_Employees_id" Type="int" />
+    <Property Name="RkkInfo_Branch_id" Type="int" />
+    <Property Name="RkkInfo_Files_id" Type="int" />
+    <Property Name="RkkInfo_Jobs_Opening_id" Type="int" />
+    <Property Name="RkkInfo_Jobs_Vacancy_id" Type="int" />
+    <Property Name="RkkInfo_Vacation_id" Type="int" />
+    <Property Name="RkkInfo_Dismissal_id" Type="int" />
+  </EntityType>
+  <EntityType Name="RkkInfo_Users">
+    <Key>
+      <PropertyRef Name="RkkInfo_Users_id" />
+    </Key>
+    <Property Name="RkkInfo_Users_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RkkInfo_Users_Login" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Users_Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RkkInfo_Vacation">
+    <Key>
+      <PropertyRef Name="RkkInfo_Vacation_id" />
+    </Key>
+    <Property Name="RkkInfo_Vacation_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RkkInfo_Vacation_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Vacation_First_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Vacation_Last_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Vacation_Position" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Vacation_Start_Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Vacation_End_Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="RkkInfo_Vacation_Files" Type="varbinary(max)" />
+    <Property Name="RkkInfo_Vacation_Status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_RkkInfo_Main_RkkInfo_Branch">
+    <End Role="RkkInfo_Branch" Type="Self.RkkInfo_Branch" Multiplicity="0..1" />
+    <End Role="RkkInfo_Main" Type="Self.RkkInfo_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RkkInfo_Branch">
+        <PropertyRef Name="RkkInfo_Branch_id" />
+      </Principal>
+      <Dependent Role="RkkInfo_Main">
+        <PropertyRef Name="RkkInfo_Branch_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RkkInfo_Main_RkkInfo_Dismissal">
+    <End Role="RkkInfo_Dismissal" Type="Self.RkkInfo_Dismissal" Multiplicity="0..1" />
+    <End Role="RkkInfo_Main" Type="Self.RkkInfo_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RkkInfo_Dismissal">
+        <PropertyRef Name="RkkInfo_Dismissal_id" />
+      </Principal>
+      <Dependent Role="RkkInfo_Main">
+        <PropertyRef Name="RkkInfo_Dismissal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RkkInfo_Main_RkkInfo_Employees">
+    <End Role="RkkInfo_Employees" Type="Self.RkkInfo_Employees" Multiplicity="0..1" />
+    <End Role="RkkInfo_Main" Type="Self.RkkInfo_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RkkInfo_Employees">
+        <PropertyRef Name="RkkInfo_Employees_id" />
+      </Principal>
+      <Dependent Role="RkkInfo_Main">
+        <PropertyRef Name="RkkInfo_Employees_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RkkInfo_Main_RkkInfo_Files">
+    <End Role="RkkInfo_Files" Type="Self.RkkInfo_Files" Multiplicity="0..1" />
+    <End Role="RkkInfo_Main" Type="Self.RkkInfo_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RkkInfo_Files">
+        <PropertyRef Name="RkkInfo_Files_id" />
+      </Principal>
+      <Dependent Role="RkkInfo_Main">
+        <PropertyRef Name="RkkInfo_Files_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RkkInfo_Main_RkkInfo_Jobs_Opening">
+    <End Role="RkkInfo_Jobs_Opening" Type="Self.RkkInfo_Jobs_Opening" Multiplicity="0..1" />
+    <End Role="RkkInfo_Main" Type="Self.RkkInfo_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RkkInfo_Jobs_Opening">
+        <PropertyRef Name="RkkInfo_Jobs_Opening_id" />
+      </Principal>
+      <Dependent Role="RkkInfo_Main">
+        <PropertyRef Name="RkkInfo_Jobs_Opening_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RkkInfo_Main_RkkInfo_Jobs_Vacancy">
+    <End Role="RkkInfo_Jobs_Vacancy" Type="Self.RkkInfo_Jobs_Vacancy" Multiplicity="0..1" />
+    <End Role="RkkInfo_Main" Type="Self.RkkInfo_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RkkInfo_Jobs_Vacancy">
+        <PropertyRef Name="RkkInfo_Jobs_Vacancy_id" />
+      </Principal>
+      <Dependent Role="RkkInfo_Main">
+        <PropertyRef Name="RkkInfo_Vacation_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RkkInfo_Main_RkkInfo_Vacation">
+    <End Role="RkkInfo_Vacation" Type="Self.RkkInfo_Vacation" Multiplicity="0..1" />
+    <End Role="RkkInfo_Main" Type="Self.RkkInfo_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RkkInfo_Vacation">
+        <PropertyRef Name="RkkInfo_Vacation_id" />
+      </Principal>
+      <Dependent Role="RkkInfo_Main">
+        <PropertyRef Name="RkkInfo_Vacation_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Хранилище RkkInfo_dbModelContainer">
+    <EntitySet Name="RkkInfo_Branch" EntityType="Self.RkkInfo_Branch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RkkInfo_Dismissal" EntityType="Self.RkkInfo_Dismissal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RkkInfo_Employees" EntityType="Self.RkkInfo_Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RkkInfo_Files" EntityType="Self.RkkInfo_Files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RkkInfo_Jobs_Opening" EntityType="Self.RkkInfo_Jobs_Opening" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RkkInfo_Jobs_Vacancy" EntityType="Self.RkkInfo_Jobs_Vacancy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RkkInfo_Main" EntityType="Self.RkkInfo_Main" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RkkInfo_Users" EntityType="Self.RkkInfo_Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RkkInfo_Vacation" EntityType="Self.RkkInfo_Vacation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_RkkInfo_Main_RkkInfo_Branch" Association="Self.FK_RkkInfo_Main_RkkInfo_Branch">
+      <End Role="RkkInfo_Branch" EntitySet="RkkInfo_Branch" />
+      <End Role="RkkInfo_Main" EntitySet="RkkInfo_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RkkInfo_Main_RkkInfo_Dismissal" Association="Self.FK_RkkInfo_Main_RkkInfo_Dismissal">
+      <End Role="RkkInfo_Dismissal" EntitySet="RkkInfo_Dismissal" />
+      <End Role="RkkInfo_Main" EntitySet="RkkInfo_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RkkInfo_Main_RkkInfo_Employees" Association="Self.FK_RkkInfo_Main_RkkInfo_Employees">
+      <End Role="RkkInfo_Employees" EntitySet="RkkInfo_Employees" />
+      <End Role="RkkInfo_Main" EntitySet="RkkInfo_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RkkInfo_Main_RkkInfo_Files" Association="Self.FK_RkkInfo_Main_RkkInfo_Files">
+      <End Role="RkkInfo_Files" EntitySet="RkkInfo_Files" />
+      <End Role="RkkInfo_Main" EntitySet="RkkInfo_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RkkInfo_Main_RkkInfo_Jobs_Opening" Association="Self.FK_RkkInfo_Main_RkkInfo_Jobs_Opening">
+      <End Role="RkkInfo_Jobs_Opening" EntitySet="RkkInfo_Jobs_Opening" />
+      <End Role="RkkInfo_Main" EntitySet="RkkInfo_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RkkInfo_Main_RkkInfo_Jobs_Vacancy" Association="Self.FK_RkkInfo_Main_RkkInfo_Jobs_Vacancy">
+      <End Role="RkkInfo_Jobs_Vacancy" EntitySet="RkkInfo_Jobs_Vacancy" />
+      <End Role="RkkInfo_Main" EntitySet="RkkInfo_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RkkInfo_Main_RkkInfo_Vacation" Association="Self.FK_RkkInfo_Main_RkkInfo_Vacation">
+      <End Role="RkkInfo_Vacation" EntitySet="RkkInfo_Vacation" />
+      <End Role="RkkInfo_Main" EntitySet="RkkInfo_Main" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

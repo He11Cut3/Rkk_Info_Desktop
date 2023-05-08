@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище RkkInfo_dbModelContainer" CdmEntityContainer="RkkInfo_dbEntities">
+    <EntitySetMapping Name="RkkInfo_Branch">
+      <EntityTypeMapping TypeName="RkkInfo_dbModel.RkkInfo_Branch">
+        <MappingFragment StoreEntitySet="RkkInfo_Branch">
+          <ScalarProperty Name="RkkInfo_Branch_id" ColumnName="RkkInfo_Branch_id" />
+          <ScalarProperty Name="RkkInfo_Branch_Name" ColumnName="RkkInfo_Branch_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RkkInfo_Dismissal">
+      <EntityTypeMapping TypeName="RkkInfo_dbModel.RkkInfo_Dismissal">
+        <MappingFragment StoreEntitySet="RkkInfo_Dismissal">
+          <ScalarProperty Name="RkkInfo_Dismissal_id" ColumnName="RkkInfo_Dismissal_id" />
+          <ScalarProperty Name="RkkInfo_Dismissal_Name" ColumnName="RkkInfo_Dismissal_Name" />
+          <ScalarProperty Name="RkkInfo_Dismissal_First_Name" ColumnName="RkkInfo_Dismissal_First_Name" />
+          <ScalarProperty Name="RkkInfo_Dismissal_Last_Name" ColumnName="RkkInfo_Dismissal_Last_Name" />
+          <ScalarProperty Name="RkkInfo_Dismissal_Position" ColumnName="RkkInfo_Dismissal_Position" />
+          <ScalarProperty Name="RkkInfo_Dismissal_Date" ColumnName="RkkInfo_Dismissal_Date" />
+          <ScalarProperty Name="RkkInfo_Dismissal_Files" ColumnName="RkkInfo_Dismissal_Files" />
+          <ScalarProperty Name="RkkInfo_Dismissal_Status" ColumnName="RkkInfo_Dismissal_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RkkInfo_Employees">
+      <EntityTypeMapping TypeName="RkkInfo_dbModel.RkkInfo_Employees">
+        <MappingFragment StoreEntitySet="RkkInfo_Employees">
+          <ScalarProperty Name="RkkInfo_Employees_id" ColumnName="RkkInfo_Employees_id" />
+          <ScalarProperty Name="RkkInfo_Employees_First_Name" ColumnName="RkkInfo_Employees_First_Name" />
+          <ScalarProperty Name="RkkInfo_Employees_Last_Name" ColumnName="RkkInfo_Employees_Last_Name" />
+          <ScalarProperty Name="RkkInfo_Employees_Position" ColumnName="RkkInfo_Employees_Position" />
+          <ScalarProperty Name="RkkInfo_Employees_Department" ColumnName="RkkInfo_Employees_Department" />
+          <ScalarProperty Name="RkkInfo_Employees_Start_Date" ColumnName="RkkInfo_Employees_Start_Date" />
+          <ScalarProperty Name="RkkInfo_Employees_Is_Active" ColumnName="RkkInfo_Employees_Is_Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RkkInfo_Files">
+      <EntityTypeMapping TypeName="RkkInfo_dbModel.RkkInfo_Files">
+        <MappingFragment StoreEntitySet="RkkInfo_Files">
+          <ScalarProperty Name="RkkInfo_Files_id" ColumnName="RkkInfo_Files_id" />
+          <ScalarProperty Name="RkkInfo_Files_Name" ColumnName="RkkInfo_Files_Name" />
+          <ScalarProperty Name="RkkInfo_Files_Data" ColumnName="RkkInfo_Files_Data" />
+          <ScalarProperty Name="RkkInfo_Files_Files" ColumnName="RkkInfo_Files_Files" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RkkInfo_Jobs_Opening">
+      <EntityTypeMapping TypeName="RkkInfo_dbModel.RkkInfo_Jobs_Opening">
+        <MappingFragment StoreEntitySet="RkkInfo_Jobs_Opening">
+          <ScalarProperty Name="RkkInfo_Jobs_Opening_id" ColumnName="RkkInfo_Jobs_Opening_id" />
+          <ScalarProperty Name="RkkInfo_Jobs_Opening_Name" ColumnName="RkkInfo_Jobs_Opening_Name" />
+          <ScalarProperty Name="RkkInfo_Jobs_Opening_Date" ColumnName="RkkInfo_Jobs_Opening_Date" />
+          <ScalarProperty Name="RkkInfo_Jobs_Opening_Files" ColumnName="RkkInfo_Jobs_Opening_Files" />
+          <ScalarProperty Name="RkkInfo_Jobs_Opening_Status" ColumnName="RkkInfo_Jobs_Opening_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RkkInfo_Jobs_Vacancy">
+      <EntityTypeMapping TypeName="RkkInfo_dbModel.RkkInfo_Jobs_Vacancy">
+        <MappingFragment StoreEntitySet="RkkInfo_Jobs_Vacancy">
+          <ScalarProperty Name="RkkInfo_Jobs_Vacancy_id" ColumnName="RkkInfo_Jobs_Vacancy_id" />
+          <ScalarProperty Name="RkkInfo_Jobs_Vacancy_Name" ColumnName="RkkInfo_Jobs_Vacancy_Name" />
+          <ScalarProperty Name="RkkInfo_Jobs_Vacancy_First_Name" ColumnName="RkkInfo_Jobs_Vacancy_First_Name" />
+          <ScalarProperty Name="RkkInfo_Jobs_Vacancy_Last_Name" ColumnName="RkkInfo_Jobs_Vacancy_Last_Name" />
+          <ScalarProperty Name="RkkInfo_Jobs_Vacancy_Position" ColumnName="RkkInfo_Jobs_Vacancy_Position" />
+          <ScalarProperty Name="RkkInfo_Jobs_Vacancy_Date" ColumnName="RkkInfo_Jobs_Vacancy_Date" />
+          <ScalarProperty Name="RkkInfo_Jobs_Vacancy_Files" ColumnName="RkkInfo_Jobs_Vacancy_Files" />
+          <ScalarProperty Name="RkkInfo_Jobs_Vacancy_Status" ColumnName="RkkInfo_Jobs_Vacancy_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RkkInfo_Main">
+      <EntityTypeMapping TypeName="RkkInfo_dbModel.RkkInfo_Main">
+        <MappingFragment StoreEntitySet="RkkInfo_Main">
+          <ScalarProperty Name="RkkInfo_Main_id" ColumnName="RkkInfo_Main_id" />
+          <ScalarProperty Name="RkkInfo_Employees_id" ColumnName="RkkInfo_Employees_id" />
+          <ScalarProperty Name="RkkInfo_Branch_id" ColumnName="RkkInfo_Branch_id" />
+          <ScalarProperty Name="RkkInfo_Files_id" ColumnName="RkkInfo_Files_id" />
+          <ScalarProperty Name="RkkInfo_Jobs_Opening_id" ColumnName="RkkInfo_Jobs_Opening_id" />
+          <ScalarProperty Name="RkkInfo_Jobs_Vacancy_id" ColumnName="RkkInfo_Jobs_Vacancy_id" />
+          <ScalarProperty Name="RkkInfo_Vacation_id" ColumnName="RkkInfo_Vacation_id" />
+          <ScalarProperty Name="RkkInfo_Dismissal_id" ColumnName="RkkInfo_Dismissal_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RkkInfo_Users">
+      <EntityTypeMapping TypeName="RkkInfo_dbModel.RkkInfo_Users">
+        <MappingFragment StoreEntitySet="RkkInfo_Users">
+          <ScalarProperty Name="RkkInfo_Users_id" ColumnName="RkkInfo_Users_id" />
+          <ScalarProperty Name="RkkInfo_Users_Login" ColumnName="RkkInfo_Users_Login" />
+          <ScalarProperty Name="RkkInfo_Users_Password" ColumnName="RkkInfo_Users_Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RkkInfo_Vacation">
+      <EntityTypeMapping TypeName="RkkInfo_dbModel.RkkInfo_Vacation">
+        <MappingFragment StoreEntitySet="RkkInfo_Vacation">
+          <ScalarProperty Name="RkkInfo_Vacation_id" ColumnName="RkkInfo_Vacation_id" />
+          <ScalarProperty Name="RkkInfo_Vacation_Name" ColumnName="RkkInfo_Vacation_Name" />
+          <ScalarProperty Name="RkkInfo_Vacation_First_Name" ColumnName="RkkInfo_Vacation_First_Name" />
+          <ScalarProperty Name="RkkInfo_Vacation_Last_Name" ColumnName="RkkInfo_Vacation_Last_Name" />
+          <ScalarProperty Name="RkkInfo_Vacation_Position" ColumnName="RkkInfo_Vacation_Position" />
+          <ScalarProperty Name="RkkInfo_Vacation_Start_Date" ColumnName="RkkInfo_Vacation_Start_Date" />
+          <ScalarProperty Name="RkkInfo_Vacation_End_Date" ColumnName="RkkInfo_Vacation_End_Date" />
+          <ScalarProperty Name="RkkInfo_Vacation_Files" ColumnName="RkkInfo_Vacation_Files" />
+          <ScalarProperty Name="RkkInfo_Vacation_Status" ColumnName="RkkInfo_Vacation_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="RkkInfo_dbModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище RkkInfo_dbModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище RkkInfo_dbModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище RkkInfo_dbModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище RkkInfo_dbModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RkkInfo_dbModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище RkkInfo_dbModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RkkInfo_dbModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище RkkInfo_dbModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище RkkInfo_dbModel.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>
