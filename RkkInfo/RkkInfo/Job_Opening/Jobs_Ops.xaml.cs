@@ -1,4 +1,6 @@
-﻿using RkkInfo.Job_Vacancy;
+﻿using MaterialDesignThemes.Wpf;
+using RkkInfo.Job_Vacancy;
+using RkkInfo.Vacancy;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,23 +28,32 @@ namespace RkkInfo.Job_Opening
         List<RkkInfo_Jobs_Opening> _list = new List<RkkInfo_Jobs_Opening>();
         List<RkkInfo_Jobs_Vacancy> _list1 = new List<RkkInfo_Jobs_Vacancy>();
 
-        public Jobs_Ops(RkkInfo_dbEntities context)
+        private string _login;
+
+        public Jobs_Ops(RkkInfo_dbEntities context, string login)
         {
             InitializeComponent();
             _context = context;
-            LV_.ItemsSource = _context.RkkInfo_Jobs_Opening.OrderBy(t => t.RkkInfo_Jobs_Opening_id).ToList();
+            _login = login;
+            LV_1.ItemsSource = _context.RkkInfo_Jobs_Opening.OrderBy(t => t.RkkInfo_Jobs_Opening_id).ToList();
+            if (!_login.Contains("_admin"))
+            {
+                New_Vacan.Visibility = Visibility.Collapsed;
+            }
         }
+        
+
 
         public void Update_Jobs_Open()
         {
             _list = _context.RkkInfo_Jobs_Opening.ToList();
-            LV_.ItemsSource = _list;
+            LV_1.ItemsSource = _list;
         }
 
         public void Update_Jobs_Vac()
         {
             _list1 = _context.RkkInfo_Jobs_Vacancy.ToList();
-            LV_.ItemsSource = _list1;
+            LV_1.ItemsSource = _list1;
         }
 
         private void New_Vacan_Click(object sender, RoutedEventArgs e)
@@ -53,19 +64,33 @@ namespace RkkInfo.Job_Opening
 
         private void Vac_Edit_Click(object sender, RoutedEventArgs e)
         {
-            Jobs_Opening_Edit jobs_Opening_Edit = new Jobs_Opening_Edit(_context, sender, this);
-            jobs_Opening_Edit.ShowDialog();
+            if (!_login.Contains("_admin"))
+            {
+                System.Windows.MessageBox.Show("У вас нету доступа к этой функции");
+            }
+            else
+            {
+                Jobs_Opening_Edit jobs_Opening_Edit = new Jobs_Opening_Edit(_context, sender, this);
+                jobs_Opening_Edit.ShowDialog();
+            }
         }
 
         private void Vac_Del_Click(object sender, RoutedEventArgs e)
         {
-            if ((System.Windows.MessageBox.Show("Вы уверены, что хотите удалить информацию?", "Добавление", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
+            if (!_login.Contains("_admin"))
             {
-                var button = sender as Button;
-                var item = button.DataContext as RkkInfo_Jobs_Opening;
-                _context.RkkInfo_Jobs_Opening.Remove(item);
-                _context.SaveChanges();
-                Update_Jobs_Open();
+                System.Windows.MessageBox.Show("У вас нету доступа к этой функции");
+            }
+            else
+            {
+                if ((System.Windows.MessageBox.Show("Вы уверены, что хотите удалить информацию?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
+                {
+                    var button = sender as Button;
+                    var item = button.DataContext as RkkInfo_Jobs_Opening;
+                    _context.RkkInfo_Jobs_Opening.Remove(item);
+                    _context.SaveChanges();
+                    Update_Jobs_Open();
+                }
             }
         }
 
@@ -101,5 +126,7 @@ namespace RkkInfo.Job_Opening
             Job_Vac_Add job_Vac_Add = new Job_Vac_Add(_context, sender, this);
             job_Vac_Add.ShowDialog();
         }
+
+        
     }
 }

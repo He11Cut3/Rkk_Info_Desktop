@@ -41,6 +41,7 @@ namespace RkkInfo.Job_Vacancy
 
         private void Vac_Del_Click(object sender, RoutedEventArgs e)
         {
+
             if ((System.Windows.MessageBox.Show("Вы уверены, что хотите удалить информацию?", "Добавление", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
             {
                 var button = sender as Button;

@@ -23,11 +23,13 @@ namespace RkkInfo.Vacancy
     {
         RkkInfo_dbEntities _context = new RkkInfo_dbEntities();
         List<RkkInfo_Vacation> _list = new List<RkkInfo_Vacation>();
+        private string _login;
 
-        public Vacancy_UC(RkkInfo_dbEntities rkkInfo_DbEntities)
+        public Vacancy_UC(RkkInfo_dbEntities rkkInfo_DbEntities, string login)
         {
             InitializeComponent();
             _context = rkkInfo_DbEntities;
+            _login = login;
             LV_.ItemsSource = _context.RkkInfo_Vacation.OrderBy(t => t.RkkInfo_Vacation_id).ToList();
         }
 
@@ -63,27 +65,41 @@ namespace RkkInfo.Vacancy
 
         private void Utv_Click(object sender, RoutedEventArgs e)
         {
-            if ((System.Windows.MessageBox.Show("Вы уверены, что хотите утвердить?", "Утвердить", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
+            if (!_login.Contains("_admin"))
             {
-                var button = sender as Button;
-                var item = button.DataContext as RkkInfo_Vacation;
+                System.Windows.MessageBox.Show("У вас нету доступа к этой функции");
+            }
+            else
+            {
+                if ((System.Windows.MessageBox.Show("Вы уверены, что хотите утвердить?", "Утвердить", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
+                {
+                    var button = sender as Button;
+                    var item = button.DataContext as RkkInfo_Vacation;
 
-                item.RkkInfo_Vacation_Status = "Одобрено✓";
-                _context.SaveChanges();
-                Update_VAC();
+                    item.RkkInfo_Vacation_Status = "Одобрено✓";
+                    _context.SaveChanges();
+                    Update_VAC();
+                }
             }
         }
 
         private void Des_Click(object sender, RoutedEventArgs e)
         {
-            if ((System.Windows.MessageBox.Show("Вы уверены, что хотите отказать?", "Отказ", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
+            if (!_login.Contains("_admin"))
             {
-                var button = sender as Button;
-                var item = button.DataContext as RkkInfo_Vacation;
+                System.Windows.MessageBox.Show("У вас нету доступа к этой функции");
+            }
+            else
+            {
+                if ((System.Windows.MessageBox.Show("Вы уверены, что хотите отказать?", "Отказ", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
+                {
+                    var button = sender as Button;
+                    var item = button.DataContext as RkkInfo_Vacation;
 
-                item.RkkInfo_Vacation_Status = "Отказано✖";
-                _context.SaveChanges();
-                Update_VAC();
+                    item.RkkInfo_Vacation_Status = "Отказано✖";
+                    _context.SaveChanges();
+                    Update_VAC();
+                }
             }
         }
 

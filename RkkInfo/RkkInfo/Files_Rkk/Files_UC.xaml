@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RkkInfo.Files_Rkk"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
@@ -64,20 +65,30 @@
                                                        StringFormat='Дата добавления: {0}'}"
                                                        Style="{StaticResource Button_LV}" />
                                         </WrapPanel>
-                                        <Button x:Name="Vac_Files"
+                                        <materialDesign:PopupBox HorizontalAlignment="Right"
+                                                                 VerticalAlignment="Top"
+                                                                 PlacementMode="BottomAndAlignRightEdges"
+                                                                 StaysOpen="False"
+                                                                 Grid.Column="1"
+                                                                 Width="34">
+                                            <StackPanel>
+
+                                                <Button x:Name="Vac_Files"
                                                 Grid.Row="0"
                                                 Grid.Column="1"
                                                 Content="Скачать файл"
                                                 HorizontalAlignment="Right"
-                                                Margin="10,-5,20,10"
-                                                Click="Vac_Files_Click" />
+                                                        Margin="5,5,5,5"
+                                                        Click="Vac_Files_Click" />
                                         <Button x:Name="Vac_Del"
                                                 Grid.Row="0"
                                                 Grid.Column="1"
                                                 Content="Удалить"
                                                 HorizontalAlignment="Right"
-                                                Margin="10,-5,20,10"
-                                                Click="Vac_Del_Click" />
+                                                        Margin="5,5,5,5"
+                                                        Click="Vac_Del_Click" />
+                                            </StackPanel>
+                                        </materialDesign:PopupBox>
                                     </StackPanel>
                                 </Grid>
                             </Border>

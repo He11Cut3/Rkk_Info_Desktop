@@ -1,4 +1,8 @@
 ﻿using MaterialDesignThemes.Wpf;
+using RkkInfo.Dismis;
+using RkkInfo.Emp;
+using RkkInfo.Job_Opening;
+using RkkInfo.Main_Win;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +24,10 @@ namespace RkkInfo.Authorization
     /// </summary>
     public partial class Authorization_Window : Window
     {
+        RkkInfo_dbEntities _context = new RkkInfo_dbEntities();
+
+        public string Login { get; set; }
+
         public Authorization_Window()
         {
             InitializeComponent();
@@ -58,6 +66,24 @@ namespace RkkInfo.Authorization
         private void exitApp(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void loginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string login = txtUsername.Text;
+            string password = txtPassword.Password;
+            var user = _context.RkkInfo_Users.FirstOrDefault(u => u.RkkInfo_Users_Login == login && u.RkkInfo_Users_Password == password);
+            if (user == null)
+            {
+                MessageBox.Show("Пользователь не найден");
+            }
+            else
+            {
+                Main main = new Main(user);
+                main.CheckUserRole(login);
+                this.Close();
+                main.ShowDialog();
+            }
         }
     }
 }

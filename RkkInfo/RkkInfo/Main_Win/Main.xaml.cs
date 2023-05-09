@@ -26,6 +26,7 @@ using RkkInfo.Job_Vacancy;
 using RkkInfo.Files_Rkk;
 using RkkInfo.Vacancy;
 using RkkInfo.Dismis;
+using System.Windows.Forms;
 
 namespace RkkInfo.Main_Win
 {
@@ -38,11 +39,26 @@ namespace RkkInfo.Main_Win
         RkkInfo_dbEntities _context = new RkkInfo_dbEntities();
         private string branchName;
 
-        public Main()
+
+        private RkkInfo_Users _user;
+
+        public Main(RkkInfo_Users user)
         {
             InitializeComponent();
-
+            _user = user;
+            CheckUserRole(_user.RkkInfo_Users_Login);
         }
+        
+        public void CheckUserRole(string login)
+        {
+            if (!login.Contains("_admin"))
+            {
+                Add_Employ.Visibility = Visibility.Collapsed;
+            }
+        }
+
+
+
 
         public bool IsDarkTheme { get; set; }
         private readonly PaletteHelper paletteHelper = new PaletteHelper();
@@ -77,6 +93,7 @@ namespace RkkInfo.Main_Win
         {
             uc_spawn_stack.Children.Clear();
             var buttonData = _context.RkkInfo_Branch.ToList();
+            string login = _user.RkkInfo_Users_Login;
             foreach (var data in buttonData)
             {
                 var button = new System.Windows.Controls.Button
@@ -84,7 +101,7 @@ namespace RkkInfo.Main_Win
                     Name = "button_" + data.RkkInfo_Branch_id.ToString(),
                     Content = data.RkkInfo_Branch_Name,
                     Style = (Style)FindResource("Button_Style_Spawn"),
-                    Tag = new Employ(branchName, _context)
+                    Tag = new Employ(branchName, _context, login)
                     
                 };
                 button.Click += Button_Click;
@@ -109,11 +126,15 @@ namespace RkkInfo.Main_Win
                 // Удалить предыдущий UserControl, если он был добавлен ранее
                 Empl_UC.Children.Clear();
 
+                string login = _user.RkkInfo_Users_Login;
+
                 // Создать новый экземпляр UserControl и добавить его на StackPanel
-                var userControl = new Employ(branchName, _context);
+                var userControl = new Employ(branchName, _context, login);
                 userControl.Branch = branch;
                 userControl.BranchName = branchName; // передать значение branchName в UserControl
                 userControl.UpdateLayout(); // Обновить визуальный интерфейс пользовательского элемента управления
+
+                
                 Empl_UC.Children.Add(userControl);
             }
         }
@@ -140,8 +161,11 @@ namespace RkkInfo.Main_Win
             Empl_UC.Children.Clear();
             Jobs_Vacancy_UC.Children.Clear();
 
-            Jobs_Ops jobs_Ops = new Jobs_Ops(_context);
+
+            string login = _user.RkkInfo_Users_Login;
+            Jobs_Ops jobs_Ops = new Jobs_Ops(_context, login);
             Jobs_Opening_UC.Children.Add(jobs_Ops);
+
         }
 
         private void Jobs_Vacancy_Click(object sender, RoutedEventArgs e)
@@ -183,7 +207,8 @@ namespace RkkInfo.Main_Win
             Jobs_Opening_UC.Children.Clear();
             Jobs_Vacancy_UC.Children.Clear();
 
-            Vacancy_UC vacancy_UC = new Vacancy_UC(_context);
+            string login = _user.RkkInfo_Users_Login;
+            Vacancy_UC vacancy_UC = new Vacancy_UC(_context, login);
             Vacansy.Children.Add(vacancy_UC);
         }
 
@@ -197,7 +222,8 @@ namespace RkkInfo.Main_Win
             Jobs_Opening_UC.Children.Clear();
             Jobs_Vacancy_UC.Children.Clear();
 
-            Dismis_UC dismis_UC = new Dismis_UC();
+            string login = _user.RkkInfo_Users_Login;
+            Dismis_UC dismis_UC = new Dismis_UC(login);
             Dism.Children.Add(dismis_UC);
         }
 
