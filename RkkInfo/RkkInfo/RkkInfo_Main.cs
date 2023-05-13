@@ -15,6 +15,8 @@ namespace RkkInfo
     public partial class RkkInfo_Main
     {
         public int RkkInfo_Main_id { get; set; }
+        public Nullable<int> RkkInfo_Users_id { get; set; }
+        public Nullable<int> RkkInfo_Users_Post_id { get; set; }
         public Nullable<int> RkkInfo_Employees_id { get; set; }
         public Nullable<int> RkkInfo_Branch_id { get; set; }
         public Nullable<int> RkkInfo_Files_id { get; set; }
@@ -29,6 +31,8 @@ namespace RkkInfo
         public virtual RkkInfo_Files RkkInfo_Files { get; set; }
         public virtual RkkInfo_Jobs_Opening RkkInfo_Jobs_Opening { get; set; }
         public virtual RkkInfo_Jobs_Vacancy RkkInfo_Jobs_Vacancy { get; set; }
+        public virtual RkkInfo_Users RkkInfo_Users { get; set; }
+        public virtual RkkInfo_Users_Post RkkInfo_Users_Post { get; set; }
         public virtual RkkInfo_Vacation RkkInfo_Vacation { get; set; }
     }
 }

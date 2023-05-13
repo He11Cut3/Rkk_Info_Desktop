@@ -23,14 +23,16 @@ namespace RkkInfo.Vacancy
     {
         RkkInfo_dbEntities _context = new RkkInfo_dbEntities();
         List<RkkInfo_Vacation> _list = new List<RkkInfo_Vacation>();
+        private RkkInfo_Users _user;
         private string _login;
 
-        public Vacancy_UC(RkkInfo_dbEntities rkkInfo_DbEntities, string login)
+        public Vacancy_UC(RkkInfo_dbEntities rkkInfo_DbEntities, string login, RkkInfo_Users user)
         {
             InitializeComponent();
             _context = rkkInfo_DbEntities;
             _login = login;
             LV_.ItemsSource = _context.RkkInfo_Vacation.OrderBy(t => t.RkkInfo_Vacation_id).ToList();
+            _user = user;
         }
 
         public void Update_VAC()
@@ -59,7 +61,8 @@ namespace RkkInfo.Vacancy
 
         private void New_Vac_Click(object sender, RoutedEventArgs e)
         {
-            Vacan_Add vacan_Add = new Vacan_Add(_context, this);
+            string login = _user.RkkInfo_Users_Login;
+            Vacan_Add vacan_Add = new Vacan_Add(_context, this, login);
             vacan_Add.ShowDialog();
         }
 

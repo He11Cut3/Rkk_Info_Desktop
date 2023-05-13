@@ -35,6 +35,7 @@ namespace RkkInfo
         public virtual DbSet<RkkInfo_Jobs_Vacancy> RkkInfo_Jobs_Vacancy { get; set; }
         public virtual DbSet<RkkInfo_Main> RkkInfo_Main { get; set; }
         public virtual DbSet<RkkInfo_Users> RkkInfo_Users { get; set; }
+        public virtual DbSet<RkkInfo_Users_Post> RkkInfo_Users_Post { get; set; }
         public virtual DbSet<RkkInfo_Vacation> RkkInfo_Vacation { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     

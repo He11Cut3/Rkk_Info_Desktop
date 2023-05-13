@@ -120,8 +120,6 @@
                       FontSize="16"
                       x:Name="myComboBox">
                 <ComboBoxItem>Вакансия свободна</ComboBoxItem>
-                <ComboBoxItem>В процессе обработки</ComboBoxItem>
-                <ComboBoxItem>Вакансия занята</ComboBoxItem>
             </ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="1"
@@ -133,7 +131,7 @@
                        Margin="30,35,0,0"
                        Width="138" />
             
-            <TextBlock Text="Дата появление вакансии"
+            <TextBlock Text="Дата появления вакансии"
                        Style="{StaticResource Button_LV}"
                        Height="22"
                        Margin="30,35,0,0"

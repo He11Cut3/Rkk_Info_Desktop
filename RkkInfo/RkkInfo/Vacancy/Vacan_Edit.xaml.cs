@@ -37,9 +37,15 @@ namespace RkkInfo.Vacancy
             myComboBox.Text = rkkInfo_Vacation.RkkInfo_Vacation_Name;
             Last_Name.Text = rkkInfo_Vacation.RkkInfo_Vacation_Last_Name;
             First_Name.Text = rkkInfo_Vacation.RkkInfo_Vacation_First_Name;
+            Patronymic.Text = rkkInfo_Vacation.RkkInfo_Vacation_Patronymic;
             Position.Text = rkkInfo_Vacation.RkkInfo_Vacation_Position;
             Date_Start.Text = rkkInfo_Vacation.RkkInfo_Vacation_Start_Date;
             Date_End.Text = rkkInfo_Vacation.RkkInfo_Vacation_End_Date;
+
+            Last_Name.IsEnabled = false;
+            First_Name.IsEnabled = false;
+            Patronymic.IsEnabled = false;
+            Position.IsEnabled = false;
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
@@ -56,6 +62,7 @@ namespace RkkInfo.Vacancy
                     rkkInfo_Vacation.RkkInfo_Vacation_Last_Name = Last_Name.Text;
                     rkkInfo_Vacation.RkkInfo_Vacation_First_Name = First_Name.Text;
                     rkkInfo_Vacation.RkkInfo_Vacation_Position = Position.Text;
+                    rkkInfo_Vacation.RkkInfo_Vacation_Patronymic = Patronymic.Text;
                     rkkInfo_Vacation.RkkInfo_Vacation_Start_Date = Date_Start.SelectedDate?.ToString("dd.MM.yyyy");
                     rkkInfo_Vacation.RkkInfo_Vacation_End_Date = Date_Start.SelectedDate?.ToString("dd.MM.yyyy");
                     rkkInfo_Vacation.RkkInfo_Vacation_Files = imageBytes;

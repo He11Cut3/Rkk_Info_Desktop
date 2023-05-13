@@ -12,23 +12,16 @@ namespace RkkInfo
     using System;
     using System.Collections.Generic;
     
-    public partial class RkkInfo_Dismissal
+    public partial class RkkInfo_Users_Post
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RkkInfo_Dismissal()
+        public RkkInfo_Users_Post()
         {
             this.RkkInfo_Main = new HashSet<RkkInfo_Main>();
         }
     
-        public int RkkInfo_Dismissal_id { get; set; }
-        public string RkkInfo_Dismissal_Name { get; set; }
-        public string RkkInfo_Dismissal_First_Name { get; set; }
-        public string RkkInfo_Dismissal_Last_Name { get; set; }
-        public string RkkInfo_Dismissal_Patronymic { get; set; }
-        public string RkkInfo_Dismissal_Position { get; set; }
-        public string RkkInfo_Dismissal_Date { get; set; }
-        public byte[] RkkInfo_Dismissal_Files { get; set; }
-        public string RkkInfo_Dismissal_Status { get; set; }
+        public int RkkInfo_Users_Post_id { get; set; }
+        public string RkkInfo_Users_Post_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RkkInfo_Main> RkkInfo_Main { get; set; }

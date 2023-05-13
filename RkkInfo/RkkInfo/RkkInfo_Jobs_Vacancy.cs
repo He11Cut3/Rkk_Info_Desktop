@@ -24,6 +24,7 @@ namespace RkkInfo
         public string RkkInfo_Jobs_Vacancy_Name { get; set; }
         public string RkkInfo_Jobs_Vacancy_First_Name { get; set; }
         public string RkkInfo_Jobs_Vacancy_Last_Name { get; set; }
+        public string RkkInfo_Jobs_Vacancy_Patronymic { get; set; }
         public string RkkInfo_Jobs_Vacancy_Position { get; set; }
         public string RkkInfo_Jobs_Vacancy_Date { get; set; }
         public byte[] RkkInfo_Jobs_Vacancy_Files { get; set; }

@@ -33,6 +33,23 @@ namespace RkkInfo.Emp
             this._context = rkkInfo_DbEntities;
             this._uc = employ;
             _branchName = branchName;
+
+            var entities = from e in _context.RkkInfo_Users_Post
+                           select e;
+
+            // Преобразуем список объектов в список строк
+            List<string> items = entities.Select(e => e.RkkInfo_Users_Post_Name).ToList();
+
+            // Устанавливаем источник данных для ComboBox
+            Position.ItemsSource = items;
+
+        }
+        private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9)
+            {
+                e.Handled = true;
+            }
         }
 
         private void New_Employs_Click(object sender, RoutedEventArgs e)
@@ -49,6 +66,7 @@ namespace RkkInfo.Emp
                     {
                         RkkInfo_Employees_First_Name = First_Name.Text,
                         RkkInfo_Employees_Last_Name = Last_Name.Text,
+                        RkkInfo_Employees_Patronymic = Patronymic.Text,
                         RkkInfo_Employees_Position = Position.Text,
                         RkkInfo_Employees_Department = _branchName,
                         RkkInfo_Employees_Start_Date = Date.SelectedDate?.ToString("dd.MM.yyyy"),

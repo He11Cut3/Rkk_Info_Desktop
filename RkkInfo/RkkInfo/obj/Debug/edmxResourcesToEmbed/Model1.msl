@@ -16,6 +16,7 @@
           <ScalarProperty Name="RkkInfo_Dismissal_Name" ColumnName="RkkInfo_Dismissal_Name" />
           <ScalarProperty Name="RkkInfo_Dismissal_First_Name" ColumnName="RkkInfo_Dismissal_First_Name" />
           <ScalarProperty Name="RkkInfo_Dismissal_Last_Name" ColumnName="RkkInfo_Dismissal_Last_Name" />
+          <ScalarProperty Name="RkkInfo_Dismissal_Patronymic" ColumnName="RkkInfo_Dismissal_Patronymic" />
           <ScalarProperty Name="RkkInfo_Dismissal_Position" ColumnName="RkkInfo_Dismissal_Position" />
           <ScalarProperty Name="RkkInfo_Dismissal_Date" ColumnName="RkkInfo_Dismissal_Date" />
           <ScalarProperty Name="RkkInfo_Dismissal_Files" ColumnName="RkkInfo_Dismissal_Files" />
@@ -29,6 +30,7 @@
           <ScalarProperty Name="RkkInfo_Employees_id" ColumnName="RkkInfo_Employees_id" />
           <ScalarProperty Name="RkkInfo_Employees_First_Name" ColumnName="RkkInfo_Employees_First_Name" />
           <ScalarProperty Name="RkkInfo_Employees_Last_Name" ColumnName="RkkInfo_Employees_Last_Name" />
+          <ScalarProperty Name="RkkInfo_Employees_Patronymic" ColumnName="RkkInfo_Employees_Patronymic" />
           <ScalarProperty Name="RkkInfo_Employees_Position" ColumnName="RkkInfo_Employees_Position" />
           <ScalarProperty Name="RkkInfo_Employees_Department" ColumnName="RkkInfo_Employees_Department" />
           <ScalarProperty Name="RkkInfo_Employees_Start_Date" ColumnName="RkkInfo_Employees_Start_Date" />
@@ -64,6 +66,7 @@
           <ScalarProperty Name="RkkInfo_Jobs_Vacancy_Name" ColumnName="RkkInfo_Jobs_Vacancy_Name" />
           <ScalarProperty Name="RkkInfo_Jobs_Vacancy_First_Name" ColumnName="RkkInfo_Jobs_Vacancy_First_Name" />
           <ScalarProperty Name="RkkInfo_Jobs_Vacancy_Last_Name" ColumnName="RkkInfo_Jobs_Vacancy_Last_Name" />
+          <ScalarProperty Name="RkkInfo_Jobs_Vacancy_Patronymic" ColumnName="RkkInfo_Jobs_Vacancy_Patronymic" />
           <ScalarProperty Name="RkkInfo_Jobs_Vacancy_Position" ColumnName="RkkInfo_Jobs_Vacancy_Position" />
           <ScalarProperty Name="RkkInfo_Jobs_Vacancy_Date" ColumnName="RkkInfo_Jobs_Vacancy_Date" />
           <ScalarProperty Name="RkkInfo_Jobs_Vacancy_Files" ColumnName="RkkInfo_Jobs_Vacancy_Files" />
@@ -75,6 +78,8 @@
       <EntityTypeMapping TypeName="RkkInfo_dbModel.RkkInfo_Main">
         <MappingFragment StoreEntitySet="RkkInfo_Main">
           <ScalarProperty Name="RkkInfo_Main_id" ColumnName="RkkInfo_Main_id" />
+          <ScalarProperty Name="RkkInfo_Users_id" ColumnName="RkkInfo_Users_id" />
+          <ScalarProperty Name="RkkInfo_Users_Post_id" ColumnName="RkkInfo_Users_Post_id" />
           <ScalarProperty Name="RkkInfo_Employees_id" ColumnName="RkkInfo_Employees_id" />
           <ScalarProperty Name="RkkInfo_Branch_id" ColumnName="RkkInfo_Branch_id" />
           <ScalarProperty Name="RkkInfo_Files_id" ColumnName="RkkInfo_Files_id" />
@@ -90,7 +95,18 @@
         <MappingFragment StoreEntitySet="RkkInfo_Users">
           <ScalarProperty Name="RkkInfo_Users_id" ColumnName="RkkInfo_Users_id" />
           <ScalarProperty Name="RkkInfo_Users_Login" ColumnName="RkkInfo_Users_Login" />
+          <ScalarProperty Name="RkkInfo_Users_Login_First_Name" ColumnName="RkkInfo_Users_Login_First_Name" />
+          <ScalarProperty Name="RkkInfo_Users_Login_Last_Name" ColumnName="RkkInfo_Users_Login_Last_Name" />
+          <ScalarProperty Name="RkkInfo_Users_Login_Patronymic" ColumnName="RkkInfo_Users_Login_Patronymic" />
           <ScalarProperty Name="RkkInfo_Users_Password" ColumnName="RkkInfo_Users_Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RkkInfo_Users_Post">
+      <EntityTypeMapping TypeName="RkkInfo_dbModel.RkkInfo_Users_Post">
+        <MappingFragment StoreEntitySet="RkkInfo_Users_Post">
+          <ScalarProperty Name="RkkInfo_Users_Post_id" ColumnName="RkkInfo_Users_Post_id" />
+          <ScalarProperty Name="RkkInfo_Users_Post_Name" ColumnName="RkkInfo_Users_Post_Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -101,6 +117,7 @@
           <ScalarProperty Name="RkkInfo_Vacation_Name" ColumnName="RkkInfo_Vacation_Name" />
           <ScalarProperty Name="RkkInfo_Vacation_First_Name" ColumnName="RkkInfo_Vacation_First_Name" />
           <ScalarProperty Name="RkkInfo_Vacation_Last_Name" ColumnName="RkkInfo_Vacation_Last_Name" />
+          <ScalarProperty Name="RkkInfo_Vacation_Patronymic" ColumnName="RkkInfo_Vacation_Patronymic" />
           <ScalarProperty Name="RkkInfo_Vacation_Position" ColumnName="RkkInfo_Vacation_Position" />
           <ScalarProperty Name="RkkInfo_Vacation_Start_Date" ColumnName="RkkInfo_Vacation_Start_Date" />
           <ScalarProperty Name="RkkInfo_Vacation_End_Date" ColumnName="RkkInfo_Vacation_End_Date" />

@@ -27,6 +27,7 @@ using RkkInfo.Files_Rkk;
 using RkkInfo.Vacancy;
 using RkkInfo.Dismis;
 using System.Windows.Forms;
+using System.Windows.Media.TextFormatting;
 
 namespace RkkInfo.Main_Win
 {
@@ -208,7 +209,7 @@ namespace RkkInfo.Main_Win
             Jobs_Vacancy_UC.Children.Clear();
 
             string login = _user.RkkInfo_Users_Login;
-            Vacancy_UC vacancy_UC = new Vacancy_UC(_context, login);
+            Vacancy_UC vacancy_UC = new Vacancy_UC(_context, login, _user);
             Vacansy.Children.Add(vacancy_UC);
         }
 

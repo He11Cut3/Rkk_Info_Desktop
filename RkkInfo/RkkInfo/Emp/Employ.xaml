@@ -59,20 +59,20 @@
                                                    HorizontalAlignment="Left"
                                                    VerticalAlignment="Center"
                                                    Grid.Column="0">
-                                            <TextBlock Text="{Binding RkkInfo_Employees_First_Name,
-                                                       StringFormat='Имя: {0}'}"
-                                                       Style="{StaticResource Button_LV}" />
-                                            <TextBlock Text="{Binding RkkInfo_Employees_Last_Name,
-                                                       StringFormat='Фамилия: {0}'}"
-                                                       Style="{StaticResource Button_LV}" />
+                                            <TextBlock Style="{StaticResource Button_LV}">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="ФИО: {0} {1} {2}">
+                                                        <Binding Path="RkkInfo_Employees_Last_Name" />
+                                                        <Binding Path="RkkInfo_Employees_First_Name" />
+                                                        <Binding Path="RkkInfo_Employees_Patronymic" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
                                             <TextBlock Text="{Binding RkkInfo_Employees_Position,
                                                        StringFormat='Должность: {0}'}"
                                                        Style="{StaticResource Button_LV}" />
                                             <TextBlock Text="{Binding RkkInfo_Employees_Department,
                                                        StringFormat='Отдел: {0}'}"
-                                                       Style="{StaticResource Button_LV}" />
-                                            <TextBlock Text="{Binding RkkInfo_Employees_Start_Date,
-                                                       StringFormat='Дата начало работы: {0}'}"
                                                        Style="{StaticResource Button_LV}" />
                                             <TextBlock Text="{Binding RkkInfo_Employees_Is_Active,
                                                        StringFormat='Статус: {0}'}"

@@ -35,7 +35,7 @@
             <Grid Grid.RowSpan="2">
 
             </Grid>
-            
+
             <StackPanel Margin="15,15,15,15"
                         Grid.RowSpan="2">
                 <WrapPanel Margin="0 10 5 60"
@@ -69,7 +69,7 @@
                     </WrapPanel>
                 </Button>
 
-                
+
                 <Button Style="{StaticResource MaterialDesignFlatButton}"
                         Foreground="{DynamicResource MaterialDesignBody}"
                         materialDesign:ButtonAssist.CornerRadius="6"
@@ -99,7 +99,7 @@
                         <materialDesign:PackIcon Kind="Worker"
                                                  VerticalAlignment="Center"
                                                  Margin="0 0 20 0" />
-                        <TextBlock>Заявки</TextBlock>
+                        <TextBlock>Отклик</TextBlock>
                     </WrapPanel>
                 </Button>
 
@@ -136,7 +136,7 @@
                         <TextBlock>Отпуск</TextBlock>
                     </WrapPanel>
                 </Button>
-                
+
                 <Button Style="{StaticResource MaterialDesignFlatButton}"
                         Foreground="{DynamicResource MaterialDesignBody}"
                         materialDesign:ButtonAssist.CornerRadius="6"
@@ -207,7 +207,7 @@
                   Grid.ColumnSpan="2"
                   Margin="5,59,-5,5"
                   Grid.RowSpan="2" />
-            
+
             <Button Style="{StaticResource MaterialDesignIconButton}"
                     materialDesign:RippleAssist.Feedback="LightPink"
                     Foreground="LightCoral"
@@ -245,7 +245,7 @@
                             x:Name="FAQ"
                             Margin="0 8 0 0"
                             Content="Помощь"
-                            Click="FAQ_Click"/>
+                            Click="FAQ_Click" />
 
                 </StackPanel>
             </materialDesign:PopupBox>

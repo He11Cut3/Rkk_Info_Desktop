@@ -27,17 +27,64 @@ namespace RkkInfo.Job_Vacancy
         private Jobs_Ops job_Vanac;
         private RkkInfo_Jobs_Vacancy rkkInfo_Jobs_Vacancy;
         private RkkInfo_Jobs_Opening rkkInfo_Jobs_Opening;
+        private RkkInfo_Employees rkkInfo_Employees;
+        private RkkInfo_Users _user;
+        private string _login;
 
-        public Job_Vac_Add(RkkInfo_dbEntities context, object o, Jobs_Ops jobs_)
+        public Job_Vac_Add(RkkInfo_dbEntities context, object o, Jobs_Ops jobs_, string login)
         {
             InitializeComponent();
             _context = context;
             rkkInfo_Jobs_Opening = (o as Button).DataContext as RkkInfo_Jobs_Opening;
             job_Vanac = jobs_;
+            _login = login;
+            Check_and_Update(_login);
+        }
 
+        public void Check_and_Update(string login)
+        {
             Name.Text = rkkInfo_Jobs_Opening.RkkInfo_Jobs_Opening_Name + "_Вакансия";
-            Date.Text = rkkInfo_Jobs_Opening.RkkInfo_Jobs_Opening_Date;
+            Date.Text = DateTime.Now.ToString("dd.MM.yyyy");
 
+            RkkInfo_Users _user = _context.RkkInfo_Users.SingleOrDefault(u => u.RkkInfo_Users_Login == login);
+
+            if (_user != null) // make sure that the user was found
+            {
+                // access the user's properties
+                First_Name.Text = _user.RkkInfo_Users_Login_First_Name;
+                Last_Name.Text = _user.RkkInfo_Users_Login_Last_Name;
+                Patronymic.Text = _user.RkkInfo_Users_Login_Patronymic;
+
+
+
+                First_Name.IsEnabled = false;
+                Last_Name.IsEnabled = false;
+                Patronymic.IsEnabled = false;
+
+
+                var Find_Last_Name = Last_Name.Text;
+                var Find_First_Name = First_Name.Text;
+                var Find_Patronymic = Patronymic.Text;
+
+                var find = _context.RkkInfo_Employees.Where(x =>
+                                                             x.RkkInfo_Employees_Last_Name == Find_Last_Name &&
+                                                             x.RkkInfo_Employees_First_Name == Find_First_Name &&
+                                                             x.RkkInfo_Employees_Patronymic == Find_Patronymic).ToList();
+
+                foreach (var finder in find)
+                {
+                    Position.Text = finder.RkkInfo_Employees_Position.ToString();
+                    myComboBox.Text = finder.RkkInfo_Employees_Is_Active.ToString();
+                }
+
+                Position.IsEnabled = false;
+
+                Name.IsEnabled = false;
+
+                myComboBox.IsEnabled = false;
+
+                Date.IsEnabled = false;
+            }
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -55,12 +102,21 @@ namespace RkkInfo.Job_Vacancy
                         RkkInfo_Jobs_Vacancy_Name = Name.Text,
                         RkkInfo_Jobs_Vacancy_First_Name = First_Name.Text,
                         RkkInfo_Jobs_Vacancy_Last_Name = Last_Name.Text,
+                        RkkInfo_Jobs_Vacancy_Patronymic = Patronymic.Text,
                         RkkInfo_Jobs_Vacancy_Position = Position.Text,
-                        RkkInfo_Jobs_Vacancy_Date = Date.SelectedDate?.ToString("dd.MM.yyyy"),
+                        RkkInfo_Jobs_Vacancy_Date = Date.Text,
                         RkkInfo_Jobs_Vacancy_Files = imageBytes,
-                        RkkInfo_Jobs_Vacancy_Status = (myComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString(),
+                        RkkInfo_Jobs_Vacancy_Status = myComboBox.Text,
 
                     });
+
+                    var find = _context.RkkInfo_Jobs_Opening.Where(x => x.RkkInfo_Jobs_Opening_Name.Replace("_Вакансия", "") == Name.Text.Replace("_Вакансия", "")).ToList();
+                    foreach (var finder in find)
+                    {
+                        finder.RkkInfo_Jobs_Opening_Status = "В процессе обработки";
+                    }
+                    job_Vanac.Update_Jobs_Open();
+
                     _context.SaveChanges();
                     job_Vanac.Update_Jobs_Open();
                     this.Close();

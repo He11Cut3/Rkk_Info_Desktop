@@ -23,6 +23,7 @@ namespace RkkInfo
         public int RkkInfo_Employees_id { get; set; }
         public string RkkInfo_Employees_First_Name { get; set; }
         public string RkkInfo_Employees_Last_Name { get; set; }
+        public string RkkInfo_Employees_Patronymic { get; set; }
         public string RkkInfo_Employees_Position { get; set; }
         public string RkkInfo_Employees_Department { get; set; }
         public string RkkInfo_Employees_Start_Date { get; set; }

@@ -61,20 +61,23 @@
                                             <TextBlock Text="{Binding RkkInfo_Vacation_Name,
                                                        StringFormat='Наименование: {0}'}"
                                                        Style="{StaticResource Button_LV}" />
-                                            <TextBlock Text="{Binding RkkInfo_Vacation_First_Name,
-                                                       StringFormat='Имя: {0}'}"
-                                                       Style="{StaticResource Button_LV}" />
-                                            <TextBlock Text="{Binding RkkInfo_Vacation_Last_Name,
-                                                       StringFormat='Фамилия: {0}'}"
-                                                       Style="{StaticResource Button_LV}" />
+                                            <TextBlock Style="{StaticResource Button_LV}">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="ФИО: {0} {1} {2}">
+                                                        <Binding Path="RkkInfo_Vacation_Last_Name" />
+                                                        <Binding Path="RkkInfo_Vacation_First_Name" />
+                                                        <Binding Path="RkkInfo_Vacation_Patronymic" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
                                             <TextBlock Text="{Binding RkkInfo_Vacation_Position,
                                                        StringFormat='Должность: {0}'}"
                                                        Style="{StaticResource Button_LV}" />
                                             <TextBlock Text="{Binding RkkInfo_Vacation_Start_Date,
-                                                       StringFormat='Дата начала отпуска: {0}'}"
+                                                       StringFormat='Дата начала: {0}'}"
                                                        Style="{StaticResource Button_LV}" />
                                             <TextBlock Text="{Binding RkkInfo_Vacation_End_Date,
-                                                       StringFormat='Дата окончания отпуска: {0}'}"
+                                                       StringFormat='Дата окончания: {0}'}"
                                                        Style="{StaticResource Button_LV}" />
                                             <TextBlock Text="{Binding RkkInfo_Vacation_Status,
                                                        StringFormat='Статус: {0}'}"

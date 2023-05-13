@@ -14,8 +14,20 @@ namespace RkkInfo
     
     public partial class RkkInfo_Users
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public RkkInfo_Users()
+        {
+            this.RkkInfo_Main = new HashSet<RkkInfo_Main>();
+        }
+    
         public int RkkInfo_Users_id { get; set; }
         public string RkkInfo_Users_Login { get; set; }
+        public string RkkInfo_Users_Login_First_Name { get; set; }
+        public string RkkInfo_Users_Login_Last_Name { get; set; }
+        public string RkkInfo_Users_Login_Patronymic { get; set; }
         public string RkkInfo_Users_Password { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RkkInfo_Main> RkkInfo_Main { get; set; }
     }
 }

@@ -30,14 +30,32 @@ namespace RkkInfo.Emp
             _employees = (o as Button).DataContext as RkkInfo_Employees;
             employ = employees;
 
+            var entities = from e in _context.RkkInfo_Users_Post
+                           select e;
+
+            // Преобразуем список объектов в список строк
+            List<string> items = entities.Select(e => e.RkkInfo_Users_Post_Name).ToList();
+
+            // Устанавливаем источник данных для ComboBox
+            Position.ItemsSource = items;
+
             First_Name.Text = _employees.RkkInfo_Employees_First_Name;
             Last_Name.Text = _employees.RkkInfo_Employees_Last_Name;
+            Patronymic.Text = _employees.RkkInfo_Employees_Patronymic;
             Position.Text = _employees.RkkInfo_Employees_Position;
             Date.Text = _employees.RkkInfo_Employees_Start_Date;
             myComboBox.Text = _employees.RkkInfo_Employees_Is_Active;
 
             
         }
+        private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9)
+            {
+                e.Handled = true;
+            }
+        }
+
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
@@ -51,6 +69,7 @@ namespace RkkInfo.Emp
                 {
                     _employees.RkkInfo_Employees_First_Name = First_Name.Text;
                     _employees.RkkInfo_Employees_Last_Name = Last_Name.Text;
+                    _employees.RkkInfo_Employees_Patronymic = Patronymic.Text;
                     _employees.RkkInfo_Employees_Position = Position.Text;
                     _employees.RkkInfo_Employees_Start_Date = Date.SelectedDate?.ToString("dd.MM.yyyy");
                     _employees.RkkInfo_Employees_Is_Active = (myComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();

@@ -120,6 +120,16 @@
                      FontWeight="Medium"
                      FontSize="16"
                      MaxLength="40" />
+            <TextBox x:Name="Patronymic"
+                     Width="200"
+                     Foreground="{DynamicResource MaterialDesignBody}"
+                     Height="28"
+                     Margin="45 25 5 0"
+                     HorizontalAlignment="Left"
+                     FontFamily="Montserrat"
+                     FontWeight="Medium"
+                     FontSize="16"
+                     MaxLength="40" />
             <TextBox x:Name="Position"
                      Width="200"
                      Foreground="{DynamicResource MaterialDesignBody}"
@@ -130,7 +140,7 @@
                      FontWeight="Medium"
                      FontSize="16"
                      MaxLength="40" />
-            <DatePicker x:Name="Date"
+            <TextBox x:Name="Date"
                         Width="200"
                         Foreground="{DynamicResource MaterialDesignBody}"
                         Height="35"
@@ -139,7 +149,7 @@
                         FontFamily="Montserrat"
                         FontWeight="Medium"
                         FontSize="16" />
-            <ComboBox Width="200"
+            <TextBox Width="200"
                       Foreground="{DynamicResource MaterialDesignBody}"
                       Height="35"
                       Margin="45 25 5 0"
@@ -148,14 +158,12 @@
                       FontWeight="Medium"
                       FontSize="16"
                       x:Name="myComboBox">
-                <ComboBoxItem>Работает</ComboBoxItem>
-                <ComboBoxItem>Отпуск</ComboBoxItem>
-            </ComboBox>
+            </TextBox>
         </StackPanel>
         <StackPanel Grid.Row="1"
                     Grid.Column="0"
                     Grid.RowSpan="2">
-            <TextBlock Text="Должность"
+            <TextBlock Text="Вакансия"
                        Style="{StaticResource Button_LV}"
                        Height="22"
                        Margin="30,35,0,0"
@@ -166,6 +174,11 @@
                        Margin="30,35,0,0"
                        Width="138" />
             <TextBlock Text="Имя"
+                       Style="{StaticResource Button_LV}"
+                       Height="22"
+                       Margin="30,35,0,0"
+                       Width="138" />
+            <TextBlock Text="Отчество"
                        Style="{StaticResource Button_LV}"
                        Height="22"
                        Margin="30,35,0,0"
@@ -197,7 +210,7 @@
                 FontFamily="Montserrat"
                 Content="Добавить"
                 VerticalAlignment="Top"
-                Margin="0,25,65,0" />
+                Margin="0,24,10,0" />
     </Grid>
 </Window>
 

@@ -16,6 +16,7 @@
     <Property Name="RkkInfo_Dismissal_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Dismissal_First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Dismissal_Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RkkInfo_Dismissal_Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Dismissal_Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Dismissal_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Dismissal_Files" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -29,6 +30,7 @@
     <Property Name="RkkInfo_Employees_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="RkkInfo_Employees_First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Employees_Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RkkInfo_Employees_Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Employees_Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Employees_Department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Employees_Start_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -64,6 +66,7 @@
     <Property Name="RkkInfo_Jobs_Vacancy_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Jobs_Vacancy_First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Jobs_Vacancy_Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RkkInfo_Jobs_Vacancy_Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Jobs_Vacancy_Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Jobs_Vacancy_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Jobs_Vacancy_Files" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -75,6 +78,8 @@
       <PropertyRef Name="RkkInfo_Main_id" />
     </Key>
     <Property Name="RkkInfo_Main_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RkkInfo_Users_id" Type="Int32" />
+    <Property Name="RkkInfo_Users_Post_id" Type="Int32" />
     <Property Name="RkkInfo_Employees_id" Type="Int32" />
     <Property Name="RkkInfo_Branch_id" Type="Int32" />
     <Property Name="RkkInfo_Files_id" Type="Int32" />
@@ -88,6 +93,8 @@
     <NavigationProperty Name="RkkInfo_Files" Relationship="Self.FK_RkkInfo_Main_RkkInfo_Files" FromRole="RkkInfo_Main" ToRole="RkkInfo_Files" />
     <NavigationProperty Name="RkkInfo_Jobs_Opening" Relationship="Self.FK_RkkInfo_Main_RkkInfo_Jobs_Opening" FromRole="RkkInfo_Main" ToRole="RkkInfo_Jobs_Opening" />
     <NavigationProperty Name="RkkInfo_Jobs_Vacancy" Relationship="Self.FK_RkkInfo_Main_RkkInfo_Jobs_Vacancy" FromRole="RkkInfo_Main" ToRole="RkkInfo_Jobs_Vacancy" />
+    <NavigationProperty Name="RkkInfo_Users" Relationship="Self.FK_RkkInfo_Main_RkkInfo_Users" FromRole="RkkInfo_Main" ToRole="RkkInfo_Users" />
+    <NavigationProperty Name="RkkInfo_Users_Post" Relationship="Self.FK_RkkInfo_Main_RkkInfo_Users_Post" FromRole="RkkInfo_Main" ToRole="RkkInfo_Users_Post" />
     <NavigationProperty Name="RkkInfo_Vacation" Relationship="Self.FK_RkkInfo_Main_RkkInfo_Vacation" FromRole="RkkInfo_Main" ToRole="RkkInfo_Vacation" />
   </EntityType>
   <EntityType Name="RkkInfo_Users">
@@ -96,7 +103,19 @@
     </Key>
     <Property Name="RkkInfo_Users_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="RkkInfo_Users_Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RkkInfo_Users_Login_First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RkkInfo_Users_Login_Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RkkInfo_Users_Login_Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Users_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RkkInfo_Main" Relationship="Self.FK_RkkInfo_Main_RkkInfo_Users" FromRole="RkkInfo_Users" ToRole="RkkInfo_Main" />
+  </EntityType>
+  <EntityType Name="RkkInfo_Users_Post">
+    <Key>
+      <PropertyRef Name="RkkInfo_Users_Post_id" />
+    </Key>
+    <Property Name="RkkInfo_Users_Post_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RkkInfo_Users_Post_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RkkInfo_Main" Relationship="Self.FK_RkkInfo_Main_RkkInfo_Users_Post" FromRole="RkkInfo_Users_Post" ToRole="RkkInfo_Main" />
   </EntityType>
   <EntityType Name="RkkInfo_Vacation">
     <Key>
@@ -106,6 +125,7 @@
     <Property Name="RkkInfo_Vacation_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Vacation_First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Vacation_Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RkkInfo_Vacation_Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Vacation_Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Vacation_Start_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RkkInfo_Vacation_End_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -191,19 +211,43 @@
         <PropertyRef Name="RkkInfo_Jobs_Vacancy_id" />
       </Principal>
       <Dependent Role="RkkInfo_Main">
-        <PropertyRef Name="RkkInfo_Vacation_id" />
+        <PropertyRef Name="RkkInfo_Jobs_Vacancy_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RkkInfo_Main_RkkInfo_Users">
+    <End Role="RkkInfo_Users" Type="Self.RkkInfo_Users" Multiplicity="0..1" />
+    <End Role="RkkInfo_Main" Type="Self.RkkInfo_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RkkInfo_Users">
+        <PropertyRef Name="RkkInfo_Users_id" />
+      </Principal>
+      <Dependent Role="RkkInfo_Main">
+        <PropertyRef Name="RkkInfo_Users_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RkkInfo_Main_RkkInfo_Users_Post">
+    <End Role="RkkInfo_Users_Post" Type="Self.RkkInfo_Users_Post" Multiplicity="0..1" />
+    <End Role="RkkInfo_Main" Type="Self.RkkInfo_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RkkInfo_Users_Post">
+        <PropertyRef Name="RkkInfo_Users_Post_id" />
+      </Principal>
+      <Dependent Role="RkkInfo_Main">
+        <PropertyRef Name="RkkInfo_Users_Post_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_RkkInfo_Main_RkkInfo_Vacation">
-    <End Role="RkkInfo_Vacation" Type="Self.RkkInfo_Vacation" Multiplicity="0..1" />
-    <End Role="RkkInfo_Main" Type="Self.RkkInfo_Main" Multiplicity="*" />
+    <End Role="RkkInfo_Vacation" Type="Self.RkkInfo_Vacation" Multiplicity="1" />
+    <End Role="RkkInfo_Main" Type="Self.RkkInfo_Main" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="RkkInfo_Vacation">
         <PropertyRef Name="RkkInfo_Vacation_id" />
       </Principal>
       <Dependent Role="RkkInfo_Main">
-        <PropertyRef Name="RkkInfo_Vacation_id" />
+        <PropertyRef Name="RkkInfo_Main_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -216,6 +260,7 @@
     <EntitySet Name="RkkInfo_Jobs_Vacancy" EntityType="Self.RkkInfo_Jobs_Vacancy" />
     <EntitySet Name="RkkInfo_Main" EntityType="Self.RkkInfo_Main" />
     <EntitySet Name="RkkInfo_Users" EntityType="Self.RkkInfo_Users" />
+    <EntitySet Name="RkkInfo_Users_Post" EntityType="Self.RkkInfo_Users_Post" />
     <EntitySet Name="RkkInfo_Vacation" EntityType="Self.RkkInfo_Vacation" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <AssociationSet Name="FK_RkkInfo_Main_RkkInfo_Branch" Association="Self.FK_RkkInfo_Main_RkkInfo_Branch">
@@ -240,6 +285,14 @@
     </AssociationSet>
     <AssociationSet Name="FK_RkkInfo_Main_RkkInfo_Jobs_Vacancy" Association="Self.FK_RkkInfo_Main_RkkInfo_Jobs_Vacancy">
       <End Role="RkkInfo_Jobs_Vacancy" EntitySet="RkkInfo_Jobs_Vacancy" />
+      <End Role="RkkInfo_Main" EntitySet="RkkInfo_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RkkInfo_Main_RkkInfo_Users" Association="Self.FK_RkkInfo_Main_RkkInfo_Users">
+      <End Role="RkkInfo_Users" EntitySet="RkkInfo_Users" />
+      <End Role="RkkInfo_Main" EntitySet="RkkInfo_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RkkInfo_Main_RkkInfo_Users_Post" Association="Self.FK_RkkInfo_Main_RkkInfo_Users_Post">
+      <End Role="RkkInfo_Users_Post" EntitySet="RkkInfo_Users_Post" />
       <End Role="RkkInfo_Main" EntitySet="RkkInfo_Main" />
     </AssociationSet>
     <AssociationSet Name="FK_RkkInfo_Main_RkkInfo_Vacation" Association="Self.FK_RkkInfo_Main_RkkInfo_Vacation">

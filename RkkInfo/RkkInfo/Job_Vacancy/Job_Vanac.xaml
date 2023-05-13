@@ -52,18 +52,19 @@
                                                    VerticalAlignment="Center"
                                                    Grid.Column="0">
                                             <TextBlock Text="{Binding RkkInfo_Jobs_Vacancy_Name,
-                                                       StringFormat='Вакансия: {0}'}"
+                                                       StringFormat='Наименование: {0}'}"
                                                        Style="{StaticResource Button_LV}" />
 
 
-                                            <TextBlock Text="{Binding RkkInfo_Jobs_Vacancy_First_Name,
-                                                       StringFormat='Фамилия: {0}'}"
-                                                       Style="{StaticResource Button_LV}" />
-
-
-                                            <TextBlock Text="{Binding RkkInfo_Jobs_Vacancy_Last_Name,
-                                                       StringFormat='Имя: {0}'}"
-                                                       Style="{StaticResource Button_LV}" />
+                                            <TextBlock Style="{StaticResource Button_LV}">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="ФИО: {0} {1} {2}">
+                                                        <Binding Path="RkkInfo_Jobs_Vacancy_Last_Name" />
+                                                        <Binding Path="RkkInfo_Jobs_Vacancy_First_Name" />
+                                                        <Binding Path="RkkInfo_Jobs_Vacancy_Patronymic" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
 
 
                                             <TextBlock Text="{Binding RkkInfo_Jobs_Vacancy_Position,

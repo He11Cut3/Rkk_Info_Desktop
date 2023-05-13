@@ -28,6 +28,8 @@ namespace RkkInfo.Job_Opening
         List<RkkInfo_Jobs_Opening> _list = new List<RkkInfo_Jobs_Opening>();
         List<RkkInfo_Jobs_Vacancy> _list1 = new List<RkkInfo_Jobs_Vacancy>();
 
+        private RkkInfo_Users _user;
+
         private string _login;
 
         public Jobs_Ops(RkkInfo_dbEntities context, string login)
@@ -123,7 +125,7 @@ namespace RkkInfo.Job_Opening
 
         private void Vac_Vac_Click(object sender, RoutedEventArgs e)
         {
-            Job_Vac_Add job_Vac_Add = new Job_Vac_Add(_context, sender, this);
+            Job_Vac_Add job_Vac_Add = new Job_Vac_Add(_context, sender, this, _login);
             job_Vac_Add.ShowDialog();
         }
 

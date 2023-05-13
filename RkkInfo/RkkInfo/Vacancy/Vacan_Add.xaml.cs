@@ -24,14 +24,51 @@ namespace RkkInfo.Vacancy
     {
         private RkkInfo_dbEntities _context;
         private Vacancy_UC _uc;
+        private string _login;
 
-        public Vacan_Add(RkkInfo_dbEntities rkkInfo_DbEntities, Vacancy_UC vacancy_UC)
+        public Vacan_Add(RkkInfo_dbEntities rkkInfo_DbEntities, Vacancy_UC vacancy_UC, string login)
         {
             InitializeComponent();
             _context = rkkInfo_DbEntities;
             _uc = vacancy_UC;
+            _login = login;
 
+            RkkInfo_Users _user = _context.RkkInfo_Users.SingleOrDefault(u => u.RkkInfo_Users_Login == login);
+
+            if (_user != null) // make sure that the user was found
+            {
+                // access the user's properties
+                First_Name.Text = _user.RkkInfo_Users_Login_First_Name;
+                Last_Name.Text = _user.RkkInfo_Users_Login_Last_Name;
+                Patronymic.Text = _user.RkkInfo_Users_Login_Patronymic;
+
+
+
+                First_Name.IsEnabled = false;
+                Last_Name.IsEnabled = false;
+                Patronymic.IsEnabled = false;
+
+
+                var Find_Last_Name = Last_Name.Text;
+                var Find_First_Name = First_Name.Text;
+                var Find_Patronymic = Patronymic.Text;
+
+                var find = _context.RkkInfo_Employees.Where(x =>
+                                                             x.RkkInfo_Employees_Last_Name == Find_Last_Name &&
+                                                             x.RkkInfo_Employees_First_Name == Find_First_Name &&
+                                                             x.RkkInfo_Employees_Patronymic == Find_Patronymic).ToList();
+
+                foreach (var finder in find)
+                {
+                    Position.Text = finder.RkkInfo_Employees_Position.ToString();
+                    myComboBox.Text = finder.RkkInfo_Employees_Is_Active.ToString();
+                }
+
+                Position.IsEnabled = false;
+
+            }
         }
+
 
         private void ComeBack_Click(object sender, RoutedEventArgs e)
         {
@@ -53,6 +90,7 @@ namespace RkkInfo.Vacancy
                         RkkInfo_Vacation_Name = (myComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString(),
                         RkkInfo_Vacation_First_Name = First_Name.Text,
                         RkkInfo_Vacation_Last_Name = Last_Name.Text,
+                        RkkInfo_Vacation_Patronymic = Patronymic.Text,
                         RkkInfo_Vacation_Position = Position.Text,
                         RkkInfo_Vacation_Start_Date = Date_Start.SelectedDate?.ToString("dd.MM.yyyy"),
                         RkkInfo_Vacation_End_Date = Date_End.SelectedDate?.ToString("dd.MM.yyyy"),
