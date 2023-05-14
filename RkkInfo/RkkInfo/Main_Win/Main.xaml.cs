@@ -28,6 +28,8 @@ using RkkInfo.Vacancy;
 using RkkInfo.Dismis;
 using System.Windows.Forms;
 using System.Windows.Media.TextFormatting;
+using OfficeOpenXml;
+using System.IO;
 
 namespace RkkInfo.Main_Win
 {
@@ -224,7 +226,7 @@ namespace RkkInfo.Main_Win
             Jobs_Vacancy_UC.Children.Clear();
 
             string login = _user.RkkInfo_Users_Login;
-            Dismis_UC dismis_UC = new Dismis_UC(login);
+            Dismis_UC dismis_UC = new Dismis_UC(login, _user);
             Dism.Children.Add(dismis_UC);
         }
 
@@ -245,6 +247,228 @@ namespace RkkInfo.Main_Win
         {
             FAQ fAQ = new FAQ();
             fAQ.ShowDialog();
+        }
+
+        private void Emp_Report_Click(object sender, RoutedEventArgs e)
+        {
+            if ((System.Windows.MessageBox.Show("Вы уверены, что хотите сформировать отчёт?", "Добавление", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
+            {
+                // Получаем список всех отделов
+                List<string> departments = _context.RkkInfo_Employees.Select(c => c.RkkInfo_Employees_Department).Distinct().ToList();
+
+                // Определяем наименования столбцов
+                string[] columnNames = new string[] { "Фамилия", "Имя", "Отчество", "Должность", "Дата приема на работу", "Активен" };
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
+                // Создаем новый файл Excel
+                using (ExcelPackage package = new ExcelPackage())
+                {
+                    foreach (string department in departments)
+                    {
+                        // Создаем новый лист для отдела
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(department);
+
+                        // Записываем название отдела в первую строку
+                        worksheet.Cells[1, 1].Value = "Отдел: " + department;
+
+                        // Записываем наименования столбцов
+                        for (int i = 0; i < columnNames.Length; i++)
+                        {
+                            worksheet.Cells[2, i + 1].Value = columnNames[i];
+                        }
+
+                        // Получаем список всех сотрудников для текущего отдела
+                        List<RkkInfo_Employees> data = _context.RkkInfo_Employees.Where(f => f.RkkInfo_Employees_Department == department).ToList();
+
+                        // Записываем данные
+                        for (int i = 0; i < data.Count; i++)
+                        {
+                            worksheet.Cells[i + 3, 1].Value = data[i].RkkInfo_Employees_Last_Name;
+                            worksheet.Cells[i + 3, 2].Value = data[i].RkkInfo_Employees_First_Name;
+                            worksheet.Cells[i + 3, 3].Value = data[i].RkkInfo_Employees_Patronymic;
+                            worksheet.Cells[i + 3, 4].Value = data[i].RkkInfo_Employees_Position;
+                            worksheet.Cells[i + 3, 5].Value = data[i].RkkInfo_Employees_Start_Date;
+                            worksheet.Cells[i + 3, 6].Value = data[i].RkkInfo_Employees_Is_Active;
+                        }
+                    }
+
+                    // Сохраняем файл
+                    string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    string filePath = System.IO.Path.Combine(desktopPath, "Отчёт_Сотрудники.xlsx");
+                    File.WriteAllBytes(filePath, package.GetAsByteArray());
+                    System.Windows.MessageBox.Show("Успешно!");
+                }
+            }
+        }
+
+        private void Job_Open_Report_Click(object sender, RoutedEventArgs e)
+        {
+            if ((System.Windows.MessageBox.Show("Вы уверены, что хотите сформировать отчёт?", "Отчёт", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
+            {
+                List<RkkInfo_Jobs_Opening> data = _context.RkkInfo_Jobs_Opening.ToList();
+
+                // Определяем наименования столбцов
+                string[] columnNames = new string[] { "Наименование", "Дата", "Статус"};
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                // Создаем новый файл Excel
+                using (ExcelPackage package = new ExcelPackage())
+                {
+                    // Добавляем лист
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Отчёт_Вакансии");
+
+                    // Записываем наименования столбцов
+                    for (int i = 0; i < columnNames.Length; i++)
+                    {
+                        worksheet.Cells[1, i + 1].Value = columnNames[i];
+                    }
+
+                    // Записываем данные
+                    for (int i = 0; i < data.Count; i++)
+                    {
+                        worksheet.Cells[i + 2, 1].Value = data[i].RkkInfo_Jobs_Opening_Name;
+                        worksheet.Cells[i + 2, 2].Value = data[i].RkkInfo_Jobs_Opening_Date;
+                        worksheet.Cells[i + 2, 3].Value = data[i].RkkInfo_Jobs_Opening_Status;
+                    }
+
+                    // Сохраняем файл
+                    File.WriteAllBytes("Отчёт_Вакансии.xlsx", package.GetAsByteArray());
+                    string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    string filePath = System.IO.Path.Combine(desktopPath, "Отчёт_Вакансии.xlsx");
+                    File.WriteAllBytes(filePath, package.GetAsByteArray());
+
+                    System.Windows.MessageBox.Show("Успешно!");
+                }
+            }
+        }
+
+        private void Job_Vac_Report_Click(object sender, RoutedEventArgs e)
+        {
+            if ((System.Windows.MessageBox.Show("Вы уверены, что хотите сформировать отчёт?", "Отчёт", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
+            {
+                List<RkkInfo_Jobs_Vacancy> data = _context.RkkInfo_Jobs_Vacancy.ToList();
+
+                // Определяем наименования столбцов
+                string[] columnNames = new string[] { "Наименование", "Фамилия", "Имя", "Отчество","Должность", "Дата", "Статус" };
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                // Создаем новый файл Excel
+                using (ExcelPackage package = new ExcelPackage())
+                {
+                    // Добавляем лист
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Отчёт_Отклик");
+
+                    // Записываем наименования столбцов
+                    for (int i = 0; i < columnNames.Length; i++)
+                    {
+                        worksheet.Cells[1, i + 1].Value = columnNames[i];
+                    }
+
+                    // Записываем данные
+                    for (int i = 0; i < data.Count; i++)
+                    {
+                        worksheet.Cells[i + 2, 1].Value = data[i].RkkInfo_Jobs_Vacancy_Name;
+                        worksheet.Cells[i + 2, 2].Value = data[i].RkkInfo_Jobs_Vacancy_Last_Name;
+                        worksheet.Cells[i + 2, 3].Value = data[i].RkkInfo_Jobs_Vacancy_First_Name;
+                        worksheet.Cells[i + 2, 4].Value = data[i].RkkInfo_Jobs_Vacancy_Patronymic;
+                        worksheet.Cells[i + 2, 5].Value = data[i].RkkInfo_Jobs_Vacancy_Position;
+                        worksheet.Cells[i + 2, 6].Value = data[i].RkkInfo_Jobs_Vacancy_Date;
+                        worksheet.Cells[i + 2, 7].Value = data[i].RkkInfo_Jobs_Vacancy_Status;
+                    }
+
+                    // Сохраняем файл
+                    File.WriteAllBytes("Отчёт_Отклик.xlsx", package.GetAsByteArray());
+                    string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    string filePath = System.IO.Path.Combine(desktopPath, "Отчёт_Отклик.xlsx");
+                    File.WriteAllBytes(filePath, package.GetAsByteArray());
+                    System.Windows.MessageBox.Show("Успешно!");
+                }
+            }
+        }
+
+        private void Vac_Report_Click(object sender, RoutedEventArgs e)
+        {
+            if ((System.Windows.MessageBox.Show("Вы уверены, что хотите сформировать отчёт?", "Отчёт", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
+            {
+                List<RkkInfo_Vacation> data = _context.RkkInfo_Vacation.ToList();
+
+                // Определяем наименования столбцов
+                string[] columnNames = new string[] { "Наименование", "Фамилия", "Имя", "Отчество", "Должность", "Дата начала", "Дата окончания",  "Статус" };
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                // Создаем новый файл Excel
+                using (ExcelPackage package = new ExcelPackage())
+                {
+                    // Добавляем лист
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Отчёт_Отклик");
+
+                    // Записываем наименования столбцов
+                    for (int i = 0; i < columnNames.Length; i++)
+                    {
+                        worksheet.Cells[1, i + 1].Value = columnNames[i];
+                    }
+
+                    // Записываем данные
+                    for (int i = 0; i < data.Count; i++)
+                    {
+                        worksheet.Cells[i + 2, 1].Value = data[i].RkkInfo_Vacation_Name;
+                        worksheet.Cells[i + 2, 2].Value = data[i].RkkInfo_Vacation_Last_Name;
+                        worksheet.Cells[i + 2, 3].Value = data[i].RkkInfo_Vacation_First_Name;
+                        worksheet.Cells[i + 2, 4].Value = data[i].RkkInfo_Vacation_Patronymic;
+                        worksheet.Cells[i + 2, 5].Value = data[i].RkkInfo_Vacation_Position;
+                        worksheet.Cells[i + 2, 6].Value = data[i].RkkInfo_Vacation_Start_Date;
+                        worksheet.Cells[i + 2, 7].Value = data[i].RkkInfo_Vacation_End_Date;
+                        worksheet.Cells[i + 2, 8].Value = data[i].RkkInfo_Vacation_Status;
+                    }
+
+                    // Сохраняем файл
+                    File.WriteAllBytes("Отчёт_Отпуск.xlsx", package.GetAsByteArray());
+                    string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    string filePath = System.IO.Path.Combine(desktopPath, "Отчёт_Отпуск.xlsx");
+                    File.WriteAllBytes(filePath, package.GetAsByteArray());
+                    System.Windows.MessageBox.Show("Успешно!");
+                }
+            }
+        }
+
+        private void Dism_Report_Click(object sender, RoutedEventArgs e)
+        {
+            if ((System.Windows.MessageBox.Show("Вы уверены, что хотите сформировать отчёт?", "Отчёт", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
+            {
+                List<RkkInfo_Dismissal> data = _context.RkkInfo_Dismissal.ToList();
+
+                // Определяем наименования столбцов
+                string[] columnNames = new string[] { "Наименование", "Фамилия", "Имя", "Отчество", "Должность", "Дата", "Статус" };
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                // Создаем новый файл Excel
+                using (ExcelPackage package = new ExcelPackage())
+                {
+                    // Добавляем лист
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Отчёт_Отклик");
+
+                    // Записываем наименования столбцов
+                    for (int i = 0; i < columnNames.Length; i++)
+                    {
+                        worksheet.Cells[1, i + 1].Value = columnNames[i];
+                    }
+
+                    // Записываем данные
+                    for (int i = 0; i < data.Count; i++)
+                    {
+                        worksheet.Cells[i + 2, 1].Value = data[i].RkkInfo_Dismissal_Name;
+                        worksheet.Cells[i + 2, 2].Value = data[i].RkkInfo_Dismissal_Last_Name;
+                        worksheet.Cells[i + 2, 3].Value = data[i].RkkInfo_Dismissal_First_Name;
+                        worksheet.Cells[i + 2, 4].Value = data[i].RkkInfo_Dismissal_Patronymic;
+                        worksheet.Cells[i + 2, 5].Value = data[i].RkkInfo_Dismissal_Position;
+                        worksheet.Cells[i + 2, 6].Value = data[i].RkkInfo_Dismissal_Date;
+                        worksheet.Cells[i + 2, 7].Value = data[i].RkkInfo_Dismissal_Status;
+                    }
+
+                    // Сохраняем файл
+                    File.WriteAllBytes("Отчёт_Увольнение.xlsx", package.GetAsByteArray());
+                    string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    string filePath = System.IO.Path.Combine(desktopPath, "Отчёт_Увольнение.xlsx");
+                    File.WriteAllBytes(filePath, package.GetAsByteArray());
+                    System.Windows.MessageBox.Show("Успешно!");
+                }
+            }
         }
     }
 }

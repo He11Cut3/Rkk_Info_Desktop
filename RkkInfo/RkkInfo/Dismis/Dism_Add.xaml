@@ -103,6 +103,7 @@
             </ComboBox>
             <TextBox x:Name="Last_Name"
                      Width="200"
+                     MaxLength="40"
                      Foreground="{DynamicResource MaterialDesignBody}"
                      Height="35"
                      Margin="45 25 5 0"
@@ -112,6 +113,7 @@
                      FontSize="16" />
             <TextBox x:Name="First_Name"
                      Width="200"
+                     MaxLength="40"
                      Foreground="{DynamicResource MaterialDesignBody}"
                      Height="28"
                      Margin="45 25 5 0"
@@ -119,8 +121,19 @@
                      FontFamily="Montserrat"
                      FontWeight="Medium"
                      FontSize="16" />
+            <TextBox x:Name="Patronymic"
+                     Width="200"
+                     Foreground="{DynamicResource MaterialDesignBody}"
+                     Height="28"
+                     Margin="45 25 5 0"
+                     HorizontalAlignment="Left"
+                     FontFamily="Montserrat"
+                     FontWeight="Medium"
+                     FontSize="16"
+                     MaxLength="40" />
             <TextBox x:Name="Position"
                      Width="200"
+                     MaxLength="40"
                      Foreground="{DynamicResource MaterialDesignBody}"
                      Height="35"
                      Margin="45 25 5 0"
@@ -156,12 +169,17 @@
                        Height="22"
                        Margin="30,35,0,0"
                        Width="138" />
+            <TextBlock Text="Отчество"
+                       Style="{StaticResource Button_LV}"
+                       Height="22"
+                       Margin="30,35,0,0"
+                       Width="138" />
             <TextBlock Text="Должность"
                        Style="{StaticResource Button_LV}"
                        Height="22"
                        Margin="30,35,0,0"
                        Width="138" />
-            <TextBlock Text="Дата увольнения"
+            <TextBlock Text="Желаемая дата"
                        Style="{StaticResource Button_LV}"
                        Height="22"
                        Margin="30,35,0,0"

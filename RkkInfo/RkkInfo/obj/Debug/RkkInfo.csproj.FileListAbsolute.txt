@@ -378,3 +378,11 @@ C:\Users\Руслан-ПК\Desktop\Проекты для Git\Rkk_Info\Rkk_Info_D
 C:\Users\Руслан-ПК\Desktop\Проекты для Git\Rkk_Info\Rkk_Info_Desktop\RkkInfo\RkkInfo\obj\Debug\RkkInfo.csproj.CopyComplete
 C:\Users\Руслан-ПК\Desktop\Проекты для Git\Rkk_Info\Rkk_Info_Desktop\RkkInfo\RkkInfo\obj\Debug\RkkInfo.exe
 C:\Users\Руслан-ПК\Desktop\Проекты для Git\Rkk_Info\Rkk_Info_Desktop\RkkInfo\RkkInfo\obj\Debug\RkkInfo.pdb
+C:\Users\Руслан-ПК\Desktop\Проекты для Git\Rkk_Info\Rkk_Info_Desktop\RkkInfo\RkkInfo\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Руслан-ПК\Desktop\Проекты для Git\Rkk_Info\Rkk_Info_Desktop\RkkInfo\RkkInfo\bin\Debug\EPPlus.dll
+C:\Users\Руслан-ПК\Desktop\Проекты для Git\Rkk_Info\Rkk_Info_Desktop\RkkInfo\RkkInfo\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\Руслан-ПК\Desktop\Проекты для Git\Rkk_Info\Rkk_Info_Desktop\RkkInfo\RkkInfo\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\Руслан-ПК\Desktop\Проекты для Git\Rkk_Info\Rkk_Info_Desktop\RkkInfo\RkkInfo\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\Руслан-ПК\Desktop\Проекты для Git\Rkk_Info\Rkk_Info_Desktop\RkkInfo\RkkInfo\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\Руслан-ПК\Desktop\Проекты для Git\Rkk_Info\Rkk_Info_Desktop\RkkInfo\RkkInfo\bin\Debug\EPPlus.xml
+C:\Users\Руслан-ПК\Desktop\Проекты для Git\Rkk_Info\Rkk_Info_Desktop\RkkInfo\RkkInfo\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

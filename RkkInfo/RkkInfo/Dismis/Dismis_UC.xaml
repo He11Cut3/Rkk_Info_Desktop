@@ -61,17 +61,20 @@
                                             <TextBlock Text="{Binding RkkInfo_Dismissal_Name,
                                                        StringFormat='Наименование: {0}'}"
                                                        Style="{StaticResource Button_LV}" />
-                                            <TextBlock Text="{Binding RkkInfo_Dismissal_First_Name,
-                                                       StringFormat='Имя: {0}'}"
-                                                       Style="{StaticResource Button_LV}" />
-                                            <TextBlock Text="{Binding RkkInfo_Dismissal_Last_Name,
-                                                       StringFormat='Фамилия: {0}'}"
-                                                       Style="{StaticResource Button_LV}" />
+                                            <TextBlock Style="{StaticResource Button_LV}">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="ФИО: {0} {1} {2}">
+                                                        <Binding Path="RkkInfo_Dismissal_Last_Name" />
+                                                        <Binding Path="RkkInfo_Dismissal_First_Name" />
+                                                        <Binding Path="RkkInfo_Dismissal_Patronymic" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
                                             <TextBlock Text="{Binding RkkInfo_Dismissal_Position,
                                                        StringFormat='Должность: {0}'}"
                                                        Style="{StaticResource Button_LV}" />
                                             <TextBlock Text="{Binding RkkInfo_Dismissal_Date,
-                                                       StringFormat='Дата увольнения: {0}'}"
+                                                       StringFormat='Желаемая дата: {0}'}"
                                                        Style="{StaticResource Button_LV}" />
                                             <TextBlock Text="{Binding RkkInfo_Dismissal_Status,
                                                        StringFormat='Статус: {0}'}"

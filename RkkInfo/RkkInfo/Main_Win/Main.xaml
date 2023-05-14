@@ -246,9 +246,39 @@
                             Margin="0 8 0 0"
                             Content="Помощь"
                             Click="FAQ_Click" />
-
                 </StackPanel>
             </materialDesign:PopupBox>
+            <Menu Grid.Row="0"
+                  Grid.Column="1"
+                  Margin="868,10,74,0">
+                <MenuItem Header="Отчёт"
+                          FontSize="16"
+                          FontWeight="Bold"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          Width="122">
+                    <MenuItem Header="Сотрудники"
+                              x:Name="Emp_Report"
+                              Margin="0 8 0 0"
+                              Click="Emp_Report_Click" />
+                    <MenuItem Header="Вакансии"
+                              x:Name="Job_Open_Report"
+                              Margin="0 8 0 0"
+                              Click="Job_Open_Report_Click" />
+                    <MenuItem Header="Отклик"
+                              x:Name="Job_Vac_Report"
+                              Margin="0 8 0 0"
+                              Click="Job_Vac_Report_Click" />
+                    <MenuItem Header="Отпуск"
+                              x:Name="Vac_Report"
+                              Margin="0 8 0 0"
+                              Click="Vac_Report_Click" />
+                    <MenuItem Header="Увольнение"
+                              x:Name="Dism_Report"
+                              Margin="0 8 0 0"
+                              Click="Dism_Report_Click" />
+                </MenuItem>
+            </Menu>
         </Grid>
     </materialDesign:Card>
 </Window>

@@ -25,12 +25,14 @@ namespace RkkInfo.Dismis
     {
         RkkInfo_dbEntities _context = new RkkInfo_dbEntities();
         List<RkkInfo_Dismissal> _list = new List<RkkInfo_Dismissal>();
+        private RkkInfo_Users _user;
         private string _login;
 
-        public Dismis_UC(string login)
+        public Dismis_UC(string login, RkkInfo_Users user)
         {
             InitializeComponent();
             _login = login;
+            _user = user;
             LV_.ItemsSource = _context.RkkInfo_Dismissal.OrderBy(t => t.RkkInfo_Dismissal_id).ToList();
         }
 
@@ -61,7 +63,8 @@ namespace RkkInfo.Dismis
 
         private void New_Vac_Click(object sender, RoutedEventArgs e)
         {
-            Dism_Add dism_Add = new Dism_Add(_context, this);
+            string login = _user.RkkInfo_Users_Login;
+            Dism_Add dism_Add = new Dism_Add(_context, this, login);
             dism_Add.ShowDialog();
         }
 
