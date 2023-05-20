@@ -42,8 +42,46 @@ namespace RkkInfo.Job_Opening
             {
                 New_Vacan.Visibility = Visibility.Collapsed;
             }
+            
         }
-        
+
+        private void Finder_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = Finder.Text;
+            var query = from emp in _context.RkkInfo_Jobs_Opening
+                        where emp.RkkInfo_Jobs_Opening_Name.Contains(searchText)
+                            || emp.RkkInfo_Jobs_Opening_Date.Contains(searchText)
+                            || emp.RkkInfo_Jobs_Opening_Status.Contains(searchText)
+                        select emp;
+
+            LV_1.ItemsSource = query.ToList();
+        }
+
+        private void myComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedValue = ((ComboBoxItem)myComboBox.SelectedItem).Content.ToString();
+
+            var sortedQuery = from emp in _context.RkkInfo_Jobs_Opening
+                              select emp;
+
+            switch (selectedValue)
+            {
+                case "Имя":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Jobs_Opening_Name);
+                    break;
+                case "Дата":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Jobs_Opening_Date);
+                    break;
+                case "Статус":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Jobs_Opening_Status);
+                    break;
+                default:
+                    break;
+            }
+
+            LV_1.ItemsSource = sortedQuery.ToList();
+        }
+
 
 
         public void Update_Jobs_Open()
@@ -125,8 +163,17 @@ namespace RkkInfo.Job_Opening
 
         private void Vac_Vac_Click(object sender, RoutedEventArgs e)
         {
-            Job_Vac_Add job_Vac_Add = new Job_Vac_Add(_context, sender, this, _login);
-            job_Vac_Add.ShowDialog();
+            if (_login.Contains("_admin"))
+            {
+                System.Windows.MessageBox.Show("У вас нету доступа к этой функции");
+                
+            }
+            else
+            {
+                Job_Vac_Add job_Vac_Add = new Job_Vac_Add(_context, sender, this, _login);
+                job_Vac_Add.ShowDialog();
+            }
+            
         }
 
         

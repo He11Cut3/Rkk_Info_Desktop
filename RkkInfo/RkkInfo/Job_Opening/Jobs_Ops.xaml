@@ -29,6 +29,36 @@
                         HorizontalAlignment="Right"
                         Margin="10,10,10,10"
                         Click="New_Vacan_Click" />
+                <TextBlock Text="Поиск:"
+                           Style="{StaticResource Button_LV}"
+                           Margin="60,26,675,17" />
+                <TextBlock Text="Сортировать по:"
+                           Style="{StaticResource Button_LV}"
+                           Margin="284,26,379,17" />
+                <ComboBox Width="172"
+                          Foreground="{DynamicResource MaterialDesignBody}"
+                          Height="29"
+                          Margin="421,0,0,0"
+                          HorizontalAlignment="Left"
+                          FontFamily="Montserrat"
+                          SelectionChanged="myComboBox_SelectionChanged"
+                          FontWeight="Medium"
+                          FontSize="16"
+                          x:Name="myComboBox">
+                    <ComboBoxItem>Имя</ComboBoxItem>
+                    <ComboBoxItem>Дата</ComboBoxItem>
+                    <ComboBoxItem>Статус</ComboBoxItem>
+                </ComboBox>
+                <TextBox x:Name="Finder"
+                         Width="139"
+                         Foreground="{DynamicResource MaterialDesignBody}"
+                         Height="28"
+                         Margin="125,18,0,19"
+                         HorizontalAlignment="Left"
+                         FontFamily="Montserrat"
+                         FontWeight="Medium"
+                         FontSize="16"
+                         TextChanged="Finder_TextChanged" />
                 <ListView x:Name="LV_1"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           Grid.Row="1"
@@ -68,44 +98,52 @@
                                                        StringFormat='Статус: {0}'}"
                                                        Style="{StaticResource Button_LV}" />
                                         </WrapPanel>
-                                        <materialDesign:PopupBox HorizontalAlignment="Right"
-                                                                 VerticalAlignment="Top"
-                                                                 PlacementMode="BottomAndAlignRightEdges"
-                                                                 StaysOpen="False"
-                                                                 Grid.Column="1"
-                                                                 Width="34">
-                                            <StackPanel>
-                                                <Button x:Name="Vac_Edit"
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Content="Редактировать"
-                                                HorizontalAlignment="Right"
-                                                Margin="5,5,5,5"
-                                                        IsEnabled="{Binding IsButtonEnabled}"
-                                                        Click="Vac_Edit_Click" />
-                                        <Button x:Name="Vac_Vac"
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Content="Откликнуться"
-                                                HorizontalAlignment="Right"
-                                                        Margin="5,5,5,5"
-                                                        Click="Vac_Vac_Click" />
-                                        <Button x:Name="Vac_Files"
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Content="Скачать файл"
-                                                HorizontalAlignment="Right"
-                                                        Margin="5,5,5,5"
-                                                        Click="Vac_Files_Click" />
-                                        <Button x:Name="Vac_Del"
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Content="Удалить"
-                                                HorizontalAlignment="Right"
-                                                        Margin="5,5,5,5"
-                                                        Click="Vac_Del_Click" />
-                                            </StackPanel>
-                                        </materialDesign:PopupBox>
+                                        <WrapPanel Orientation="Horizontal"
+                                                   HorizontalAlignment="Right"
+                                                   Margin="5,5,5,5">
+                                            <Button x:Name="Vac_Files"
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    HorizontalAlignment="Right"
+                                                    Margin="5,5,5,5"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Click="Vac_Files_Click">
+                                                <materialDesign:PackIcon Kind="Download" />
+                                            </Button>
+                                            <materialDesign:PopupBox HorizontalAlignment="Right"
+                                                                     VerticalAlignment="Center"
+                                                                     PlacementMode="BottomAndAlignRightEdges"
+                                                                     StaysOpen="False"
+                                                                     Grid.Column="1"
+                                                                     Width="34">
+                                                <StackPanel>
+                                                    <Button x:Name="Vac_Edit"
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Content="Редактировать"
+                                                            HorizontalAlignment="Right"
+                                                            Margin="5,5,5,5"
+                                                            IsEnabled="{Binding IsButtonEnabled}"
+                                                            Click="Vac_Edit_Click" />
+                                                    <Button x:Name="Vac_Vac"
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Content="Откликнуться"
+                                                            HorizontalAlignment="Right"
+                                                            Margin="5,5,5,5"
+                                                            Click="Vac_Vac_Click" />
+
+                                                    <Button x:Name="Vac_Del"
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Content="Удалить"
+                                                            HorizontalAlignment="Right"
+                                                            Margin="5,5,5,5"
+                                                            Click="Vac_Del_Click" />
+                                                </StackPanel>
+                                            </materialDesign:PopupBox>
+                                        </WrapPanel>
+                                       
                                     </StackPanel>
                                 </Grid>
                             </Border>

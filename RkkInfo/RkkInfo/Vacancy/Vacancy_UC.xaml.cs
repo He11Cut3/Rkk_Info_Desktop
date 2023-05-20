@@ -35,6 +35,53 @@ namespace RkkInfo.Vacancy
             _user = user;
         }
 
+        private void Finder_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = Finder.Text;
+            var query = from emp in _context.RkkInfo_Vacation
+                        where emp.RkkInfo_Vacation_Name.Contains(searchText)
+                            || emp.RkkInfo_Vacation_First_Name.Contains(searchText)
+                            || emp.RkkInfo_Vacation_Last_Name.Contains(searchText)
+                            || emp.RkkInfo_Vacation_Patronymic.Contains(searchText)
+                            || emp.RkkInfo_Vacation_Status.Contains(searchText)
+                            || emp.RkkInfo_Vacation_Position.Contains(searchText)
+                            || emp.RkkInfo_Vacation_Status.Contains(searchText)
+                        select emp;
+
+            LV_.ItemsSource = query.ToList();
+        }
+
+        private void myComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedValue = ((ComboBoxItem)myComboBox.SelectedItem).Content.ToString();
+
+            var sortedQuery = from emp in _context.RkkInfo_Vacation
+                              select emp;
+
+            switch (selectedValue)
+            {
+                case "Фамилия":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Vacation_Last_Name);
+                    break;
+                case "Имя":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Vacation_First_Name);
+                    break;
+                case "Отчество":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Vacation_Patronymic);
+                    break;
+                case "Должность":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Vacation_Position);
+                    break;
+                case "Статус":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Vacation_Status);
+                    break;
+                default:
+                    break;
+            }
+
+            LV_.ItemsSource = sortedQuery.ToList();
+        }
+
         public void Update_VAC()
         {
             _list = _context.RkkInfo_Vacation.ToList();

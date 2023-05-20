@@ -50,7 +50,7 @@ namespace RkkInfo.Emp
 
                 if (branch != null)
                 {
-                    MessageBox.Show("Данная компания уже существует");
+                    MessageBox.Show("Данный отдел уже существует");
                 }
                 else
                 {
@@ -59,7 +59,7 @@ namespace RkkInfo.Emp
                         RkkInfo_Branch_Name = Depart_add.Text,
                     });
 
-
+                    Depart_add.Text = "";
                     _context.SaveChanges();
                 }
             }
@@ -84,7 +84,7 @@ namespace RkkInfo.Emp
                         RkkInfo_Users_Post_Name = Post_add.Text,
                     });
 
-
+                    Post_add.Text = "";
                     _context.SaveChanges();
                 }
             }
@@ -165,11 +165,16 @@ namespace RkkInfo.Emp
             Depart_del.Visibility = Visibility.Collapsed;
             Post_add.Visibility = Visibility.Collapsed;
             Post_del.Visibility = Visibility.Collapsed;
-
+            Post_Edit.Visibility = Visibility.Collapsed;
+            Depart_Edit.Visibility = Visibility.Collapsed;
+            Edit_B_Dep.Visibility = Visibility.Collapsed;
+            Edit_B_Post.Visibility = Visibility.Collapsed;
             New_Dep.Visibility = Visibility.Collapsed;
             New_Post.Visibility = Visibility.Collapsed;
             Del_Dep.Visibility = Visibility.Collapsed;
             Del_Post.Visibility = Visibility.Collapsed;
+            Edit_Post.Visibility = Visibility.Collapsed;
+            Edit_Dep.Visibility = Visibility.Collapsed;
 
             Depart_add.Visibility = Visibility.Visible;
             New_Dep.Visibility = Visibility.Visible;
@@ -185,11 +190,16 @@ namespace RkkInfo.Emp
             Depart_del.Visibility = Visibility.Collapsed;
             Post_add.Visibility = Visibility.Collapsed;
             Post_del.Visibility = Visibility.Collapsed;
-
+            Post_Edit.Visibility = Visibility.Collapsed;
+            Depart_Edit.Visibility = Visibility.Collapsed;
+            Edit_B_Dep.Visibility = Visibility.Collapsed;
+            Edit_B_Post.Visibility = Visibility.Collapsed;
             New_Dep.Visibility = Visibility.Collapsed;
             New_Post.Visibility = Visibility.Collapsed;
             Del_Dep.Visibility = Visibility.Collapsed;
             Del_Post.Visibility = Visibility.Collapsed;
+            Edit_Post.Visibility = Visibility.Collapsed;
+            Edit_Dep.Visibility = Visibility.Collapsed;
 
             New_Post.Visibility = Visibility.Visible;
             Post_add.Visibility = Visibility.Visible;
@@ -216,11 +226,16 @@ namespace RkkInfo.Emp
             Depart_del.Visibility = Visibility.Collapsed;
             Post_add.Visibility = Visibility.Collapsed;
             Post_del.Visibility = Visibility.Collapsed;
-
+            Post_Edit.Visibility = Visibility.Collapsed;
+            Depart_Edit.Visibility = Visibility.Collapsed;
+            Edit_B_Dep.Visibility = Visibility.Collapsed;
+            Edit_B_Post.Visibility = Visibility.Collapsed;
             New_Dep.Visibility = Visibility.Collapsed;
             New_Post.Visibility = Visibility.Collapsed;
             Del_Dep.Visibility = Visibility.Collapsed;
             Del_Post.Visibility = Visibility.Collapsed;
+            Edit_Post.Visibility = Visibility.Collapsed;
+            Edit_Dep.Visibility = Visibility.Collapsed;
 
             Del_Dep.Visibility = Visibility.Visible;
             Depart_del.Visibility = Visibility.Visible;
@@ -245,11 +260,16 @@ namespace RkkInfo.Emp
             Depart_del.Visibility = Visibility.Collapsed;
             Post_add.Visibility = Visibility.Collapsed;
             Post_del.Visibility = Visibility.Collapsed;
-
+            Post_Edit.Visibility = Visibility.Collapsed;
+            Depart_Edit.Visibility = Visibility.Collapsed;
+            Edit_B_Dep.Visibility = Visibility.Collapsed;
+            Edit_B_Post.Visibility = Visibility.Collapsed;
             New_Dep.Visibility = Visibility.Collapsed;
             New_Post.Visibility = Visibility.Collapsed;
             Del_Dep.Visibility = Visibility.Collapsed;
             Del_Post.Visibility = Visibility.Collapsed;
+            Edit_Post.Visibility = Visibility.Collapsed;
+            Edit_Dep.Visibility = Visibility.Collapsed;
 
             Del_Post.Visibility = Visibility.Visible;
             Post_del.Visibility = Visibility.Visible;
@@ -257,5 +277,160 @@ namespace RkkInfo.Emp
             Name_Text.Text = "Наименование должности";
 
         }
+        private void Edit_Dep_C_Click(object sender, RoutedEventArgs e)
+        {
+            var entities = from post in _context.RkkInfo_Branch
+
+                           select post.RkkInfo_Branch_Name;
+
+            List<string> postList = entities.ToList();
+
+            // Устанавливаем источник данных для ComboBox
+            Depart_Edit.ItemsSource = postList;
+            Name_Text.Text = "";
+
+            Depart_add.Visibility = Visibility.Collapsed;
+            Depart_del.Visibility = Visibility.Collapsed;
+            Post_add.Visibility = Visibility.Collapsed;
+            Post_del.Visibility = Visibility.Collapsed;
+            Post_Edit.Visibility = Visibility.Collapsed;
+            Depart_Edit.Visibility = Visibility.Collapsed;
+            Edit_B_Dep.Visibility = Visibility.Collapsed;
+            Edit_B_Post.Visibility= Visibility.Collapsed;
+
+            New_Dep.Visibility = Visibility.Collapsed;
+            New_Post.Visibility = Visibility.Collapsed;
+            Del_Dep.Visibility = Visibility.Collapsed;
+            Del_Post.Visibility = Visibility.Collapsed;
+            Edit_Post.Visibility = Visibility.Collapsed;
+            Edit_Dep.Visibility = Visibility.Collapsed;
+
+            Edit_Dep.Visibility = Visibility.Visible;
+            Depart_Edit.Visibility = Visibility.Visible;
+            Edit_B_Dep.Visibility = Visibility.Visible;
+
+
+            Name_Text.Text = "Наименование отдела (изм)";
+        }
+
+        private void Edit_Post_C_Click(object sender, RoutedEventArgs e)
+        {
+            var entities = from post in _context.RkkInfo_Users_Post
+                           select post.RkkInfo_Users_Post_Name;
+
+            List<string> postList = entities.ToList();
+
+            // Устанавливаем источник данных для ComboBox
+            Post_Edit.ItemsSource = postList;
+
+            Name_Text.Text = "";
+
+            Depart_add.Visibility = Visibility.Collapsed;
+            Depart_del.Visibility = Visibility.Collapsed;
+            Post_add.Visibility = Visibility.Collapsed;
+            Post_del.Visibility = Visibility.Collapsed;
+            Post_Edit.Visibility = Visibility.Collapsed;
+            Depart_Edit.Visibility = Visibility.Collapsed;
+
+            New_Dep.Visibility = Visibility.Collapsed;
+            New_Post.Visibility = Visibility.Collapsed;
+            Del_Dep.Visibility = Visibility.Collapsed;
+            Del_Post.Visibility = Visibility.Collapsed;
+            Edit_Post.Visibility = Visibility.Collapsed;
+            Edit_Dep.Visibility = Visibility.Collapsed;
+
+            Edit_Post.Visibility = Visibility.Visible;
+            Post_Edit.Visibility = Visibility.Visible;
+            Edit_B_Post.Visibility = Visibility.Visible;
+
+            Name_Text.Text = "Наименование должности (изм)";
+        }
+
+        private void Edit_B_Post_Click(object sender, RoutedEventArgs e)
+        {
+            if ((System.Windows.MessageBox.Show("Вы уверены, что хотите сохранить изменения?", "Сохранение", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
+            {
+                // Получаем выбранный элемент в ComboBox
+                string selectedPost = Post_Edit.SelectedItem.ToString();
+
+                // Получаем запись из базы данных, соответствующую выбранному элементу
+                var postToUpdate = _context.RkkInfo_Users_Post.FirstOrDefault(b => b.RkkInfo_Users_Post_Name == selectedPost);
+
+                if (postToUpdate != null)
+                {
+                    // Обновляем данные выбранной записи с новыми значениями из TextBox
+                    postToUpdate.RkkInfo_Users_Post_Name = Edit_Post.Text;
+
+                    // Сохраняем изменения в базе данных
+                    _context.SaveChanges();
+
+                    var entities = from post in _context.RkkInfo_Users_Post
+                                   select post.RkkInfo_Users_Post_Name;
+
+                    List<string> postList = entities.ToList();
+                    Post_Edit.ItemsSource = postList;
+                    Edit_Post.Text = "";
+
+                    System.Windows.MessageBox.Show("Изменения сохранены!");
+                }
+            }
+        }
+        private void Post_Edit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Проверяем, есть ли выбранный элемент
+            if (Post_Edit.SelectedItem != null)
+            {
+                // Получаем выбранный элемент в ComboBox
+                string selectedPost = Post_Edit.SelectedItem.ToString();
+
+                // Устанавливаем выбранное значение в TextBox
+                Edit_Post.Text = selectedPost;
+            }
+        }
+
+        private void Edit_B_Dep_Click(object sender, RoutedEventArgs e)
+        {
+            if ((System.Windows.MessageBox.Show("Вы уверены, что хотите сохранить изменения?", "Сохранение", MessageBoxButton.YesNo, MessageBoxImage.Warning)) == MessageBoxResult.Yes)
+            {
+                // Получаем выбранный элемент в ComboBox
+                string selectedPost = Depart_Edit.SelectedItem.ToString();
+
+                // Получаем запись из базы данных, соответствующую выбранному элементу
+                var postToUpdate = _context.RkkInfo_Branch.FirstOrDefault(b => b.RkkInfo_Branch_Name == selectedPost);
+
+                if (postToUpdate != null)
+                {
+                    // Обновляем данные выбранной записи с новыми значениями из TextBox
+                    postToUpdate.RkkInfo_Branch_Name = Edit_Dep.Text;
+
+                    // Сохраняем изменения в базе данных
+                    _context.SaveChanges();
+
+                    var entities = from post in _context.RkkInfo_Branch
+                                   select post.RkkInfo_Branch_Name;
+
+                    List<string> postList = entities.ToList();
+                    Depart_Edit.ItemsSource = postList;
+                    Edit_Dep.Text = "";
+
+                    System.Windows.MessageBox.Show("Изменения сохранены!");
+                }
+            }
+        }
+
+        private void Depart_Edit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Проверяем, есть ли выбранный элемент
+            if (Depart_Edit.SelectedItem != null)
+            {
+                // Получаем выбранный элемент в ComboBox
+                string selectedPost = Depart_Edit.SelectedItem.ToString();
+
+                // Устанавливаем выбранное значение в TextBox
+                Edit_Dep.Text = selectedPost;
+            }
+        }
+
+        
     }
 }

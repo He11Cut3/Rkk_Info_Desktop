@@ -14,9 +14,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-
-
-
+            
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="65" />
@@ -29,6 +27,40 @@
                         HorizontalAlignment="Right"
                         Margin="10,10,10,10"
                         Click="New_Vac_Click" />
+                <TextBlock Text="Поиск:"
+                           Style="{StaticResource Button_LV}"
+                           Margin="60,26,675,17" />
+                <TextBlock Text="Сортировать по:"
+                           Style="{StaticResource Button_LV}"
+                           Margin="284,26,379,17" />
+                <ComboBox Width="172"
+                          Foreground="{DynamicResource MaterialDesignBody}"
+                          Height="29"
+                          Margin="421,0,0,0"
+                          HorizontalAlignment="Left"
+                          FontFamily="Montserrat"
+                          SelectionChanged="myComboBox_SelectionChanged"
+                          FontWeight="Medium"
+                          FontSize="16"
+                          x:Name="myComboBox">
+                    <ComboBoxItem>Наименование</ComboBoxItem>
+                    <ComboBoxItem>Имя</ComboBoxItem>
+                    <ComboBoxItem>Фамилия</ComboBoxItem>
+                    <ComboBoxItem>Отчество</ComboBoxItem>
+                    <ComboBoxItem>Статус</ComboBoxItem>
+                    <ComboBoxItem>Должность</ComboBoxItem>
+                    <ComboBoxItem>Дата</ComboBoxItem>
+                </ComboBox>
+                <TextBox x:Name="Finder"
+                         Width="139"
+                         Foreground="{DynamicResource MaterialDesignBody}"
+                         Height="28"
+                         Margin="125,18,0,19"
+                         HorizontalAlignment="Left"
+                         FontFamily="Montserrat"
+                         FontWeight="Medium"
+                         FontSize="16"
+                         TextChanged="Finder_TextChanged" />
                 <ListView x:Name="LV_"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           Grid.Row="1"
@@ -80,51 +112,57 @@
                                                        StringFormat='Статус: {0}'}"
                                                        Style="{StaticResource Button_LV}" />
                                         </WrapPanel>
-                                        <materialDesign:PopupBox HorizontalAlignment="Right"
-                                                                 VerticalAlignment="Top"
-                                                                 PlacementMode="BottomAndAlignRightEdges"
-                                                                 StaysOpen="False"
-                                                                 Grid.Column="1"
-                                                                 Width="34">
-                                            <StackPanel>
-                                                <Button x:Name="Edit"
-                                                        Grid.Row="0"
-                                                        Grid.Column="1"
-                                                        Content="Редактировать"
-                                                        HorizontalAlignment="Right"
-                                                        Margin="5,5,5,5"
-                                                        Click="Edit_Click" />
-                                                <Button x:Name="Utv"
-                                                        Grid.Row="0"
-                                                        Grid.Column="1"
-                                                        Content="Утвердить"
-                                                        HorizontalAlignment="Right"
-                                                        Margin="5,5,5,5"
-                                                        Click="Utv_Click" />
-                                                <Button x:Name="DownLoad"
-                                                        Grid.Row="0"
-                                                        Grid.Column="1"
-                                                        Content="Скачать"
-                                                        HorizontalAlignment="Right"
-                                                        Margin="5,5,5,5"
-                                                        Click="DownLoad_Click" />
-                                                <Button x:Name="Des"
-                                                        Grid.Row="0"
-                                                        Grid.Column="1"
-                                                        Content="Отказать"
-                                                        HorizontalAlignment="Right"
-                                                        Margin="5,5,5,5"
-                                                        Click="Des_Click" />
-                                                <Button x:Name="Del"
-                                                        Grid.Row="0"
-                                                        Grid.Column="1"
-                                                        Content="Удалить"
-                                                        HorizontalAlignment="Right"
-                                                        Margin="5,5,5,5"
-                                                        Click="Del_Click" />
-                                            </StackPanel>
-                                        </materialDesign:PopupBox>
+                                        <WrapPanel Orientation="Horizontal"
+                                                   HorizontalAlignment="Right"
+                                                   Margin="5,5,5,5">
+                                            <Button x:Name="DownLoad"
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    HorizontalAlignment="Right"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Margin="5,5,5,5"
+                                                    Click="DownLoad_Click">
+                                                <materialDesign:PackIcon Kind="Download" />
+                                            </Button>
+                                            <materialDesign:PopupBox HorizontalAlignment="Right"
+                                                                     VerticalAlignment="Center"
+                                                                     PlacementMode="BottomAndAlignRightEdges"
+                                                                     StaysOpen="False"
+                                                                     Grid.Column="1"
+                                                                     Width="34">
+                                                <StackPanel>
+                                                    <Button x:Name="Edit"
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Content="Редактировать"
+                                                            HorizontalAlignment="Right"
+                                                            Margin="5,5,5,5"
+                                                            Click="Edit_Click" />
+                                                    <Button x:Name="Utv"
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Content="Утвердить"
+                                                            HorizontalAlignment="Right"
+                                                            Margin="5,5,5,5"
+                                                            Click="Utv_Click" />
 
+                                                    <Button x:Name="Des"
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Content="Отказать"
+                                                            HorizontalAlignment="Right"
+                                                            Margin="5,5,5,5"
+                                                            Click="Des_Click" />
+                                                    <Button x:Name="Del"
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Content="Удалить"
+                                                            HorizontalAlignment="Right"
+                                                            Margin="5,5,5,5"
+                                                            Click="Del_Click" />
+                                                </StackPanel>
+                                            </materialDesign:PopupBox>
+                                        </WrapPanel>
                                     </StackPanel>
                                 </Grid>
                             </Border>

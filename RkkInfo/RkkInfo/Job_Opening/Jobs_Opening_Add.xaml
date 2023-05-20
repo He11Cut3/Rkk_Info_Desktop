@@ -52,7 +52,7 @@
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Main_Win/Images/Logo.png"
                        Height="30" />
-                <TextBlock Text="Ркк 'Инфо'"
+                <TextBlock Text="РКК 'Инфо'"
                            Style="{StaticResource Button_LV}"
                            FontSize="20"
                            FontFamily="Montserrat"
@@ -142,6 +142,17 @@
                        Margin="30,35,0,0"
                        Width="138" />
         </StackPanel>
+        <Border Grid.Row="2"
+                Grid.Column="0"
+                BorderBrush="#1b97f3"
+                BorderThickness="1"
+                CornerRadius="0,0,0,10">
+            <TextBlock 
+                       Text="После нажатия на кнопку 'Добавить' - появится диалоговое окно с добавлением файла"
+                       Style="{StaticResource Button_LV}"
+                       TextWrapping="Wrap"/>
+        </Border>
+        
         <Button x:Name="New_Jobs_Opening"
                 Grid.Column="1"
                 Grid.Row="2"

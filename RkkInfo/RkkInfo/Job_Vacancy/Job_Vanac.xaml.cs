@@ -33,6 +33,60 @@ namespace RkkInfo.Job_Vacancy
             LV_.ItemsSource = _context.RkkInfo_Jobs_Vacancy.OrderBy(t => t.RkkInfo_Jobs_Vacancy_id).ToList();
         }
 
+        private void Finder_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = Finder.Text;
+            var query = from emp in _context.RkkInfo_Jobs_Vacancy
+                        where emp.RkkInfo_Jobs_Vacancy_Name.Contains(searchText)
+                            || emp.RkkInfo_Jobs_Vacancy_First_Name.Contains(searchText)
+                            || emp.RkkInfo_Jobs_Vacancy_Last_Name.Contains(searchText)
+                            || emp.RkkInfo_Jobs_Vacancy_Patronymic.Contains(searchText)
+                            || emp.RkkInfo_Jobs_Vacancy_Position.Contains(searchText)
+                            || emp.RkkInfo_Jobs_Vacancy_Date.Contains(searchText)
+                            || emp.RkkInfo_Jobs_Vacancy_Status.Contains(searchText)
+                        select emp;
+
+            LV_.ItemsSource = query.ToList();
+        }
+
+        private void myComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedValue = ((ComboBoxItem)myComboBox.SelectedItem).Content.ToString();
+
+            var sortedQuery = from emp in _context.RkkInfo_Jobs_Vacancy
+                              select emp;
+
+            switch (selectedValue)
+            {
+                case "Наименование":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Jobs_Vacancy_Name);
+                    break;
+                case "Имя":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Jobs_Vacancy_First_Name);
+                    break;
+                case "Фамилия":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Jobs_Vacancy_Last_Name);
+                    break;
+                case "Отчество":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Jobs_Vacancy_Patronymic);
+                    break;
+                case "Должность":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Jobs_Vacancy_Position);
+                    break;
+                case "Дата":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Jobs_Vacancy_Date);
+                    break;
+                case "Статус":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Jobs_Vacancy_Status);
+                    break;
+
+                default:
+                    break;
+            }
+
+            LV_.ItemsSource = sortedQuery.ToList();
+        }
+
         public void Update_Jobs_Vac()
         {
             _list = _context.RkkInfo_Jobs_Vacancy.ToList();

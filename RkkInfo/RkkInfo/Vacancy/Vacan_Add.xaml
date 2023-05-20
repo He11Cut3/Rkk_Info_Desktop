@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Main"
-        Height="530"
+        Height="650"
         Width="780"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -21,8 +21,8 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
-            <RowDefinition Height="31*" />
-            <RowDefinition Height="8*" />
+            <RowDefinition Height="74*" />
+            <RowDefinition Height="21*" />
         </Grid.RowDefinitions>
 
         <!-- Back-->
@@ -52,7 +52,7 @@
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Main_Win/Images/Logo.png"
                        Height="30" />
-                <TextBlock Text="Ркк 'Инфо'"
+                <TextBlock Text="РКК 'Инфо'"
                            Style="{StaticResource Button_LV}"
                            FontSize="20"
                            FontFamily="Montserrat"
@@ -61,8 +61,7 @@
                            Margin="10,0,0,0" />
                 <Button Style="{StaticResource MaterialDesignIconButton}"
                         Foreground="LightCoral"
-                        Width="40"
-                        HorizontalAlignment="Left"
+                        Width="34"
                         Grid.Column="1"
                         Margin="570,0,0,0"
                         x:Name="ComeBack"
@@ -200,6 +199,16 @@
                        Margin="30,35,0,0"
                        Width="148" />
         </StackPanel>
+        <Border Grid.Row="2"
+                Grid.Column="0"
+                BorderBrush="#1b97f3"
+                BorderThickness="1"
+                CornerRadius="0,0,0,10"
+                Margin="0,42,0,0">
+            <TextBlock Text="После нажатия на кнопку 'Добавить' - появится диалоговое окно с добавлением файла"
+                       Style="{StaticResource Button_LV}"
+                       TextWrapping="Wrap" />
+        </Border>
         <Button x:Name="New_Vaca"
                 Grid.Column="1"
                 Grid.Row="2"
@@ -211,7 +220,7 @@
                 FontFamily="Montserrat"
                 Content="Добавить"
                 VerticalAlignment="Top"
-                Margin="0,24,32,0" />
+                Margin="0,71,35,0" />
     </Grid>
 </Window>
 

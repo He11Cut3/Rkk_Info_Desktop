@@ -36,7 +36,59 @@ namespace RkkInfo.Dismis
             LV_.ItemsSource = _context.RkkInfo_Dismissal.OrderBy(t => t.RkkInfo_Dismissal_id).ToList();
         }
 
-        
+        private void Finder_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = Finder.Text;
+            var query = from emp in _context.RkkInfo_Dismissal
+                        where emp.RkkInfo_Dismissal_Name.Contains(searchText)
+                            || emp.RkkInfo_Dismissal_First_Name.Contains(searchText)
+                            || emp.RkkInfo_Dismissal_Last_Name.Contains(searchText)
+                            || emp.RkkInfo_Dismissal_Patronymic.Contains(searchText)
+                            || emp.RkkInfo_Dismissal_Status.Contains(searchText)
+                            || emp.RkkInfo_Dismissal_Position.Contains(searchText)
+                            || emp.RkkInfo_Dismissal_Date.Contains(searchText)
+                        select emp;
+
+            LV_.ItemsSource = query.ToList();
+        }
+
+        private void myComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedValue = ((ComboBoxItem)myComboBox.SelectedItem).Content.ToString();
+
+            var sortedQuery = from emp in _context.RkkInfo_Dismissal
+                              select emp;
+
+            switch (selectedValue)
+            {
+                case "Наименование":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Dismissal_Name);
+                    break;
+                case "Имя":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Dismissal_First_Name);
+                    break;
+                case "Фамилия":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Dismissal_Last_Name);
+                    break;
+                case "Отчество":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Dismissal_Patronymic);
+                    break;
+                case "Статус":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Dismissal_Status);
+                    break;
+                case "Должность":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Dismissal_Position);
+                    break;
+                case "Дата":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Dismissal_Date);
+                    break;
+                default:
+                    break;
+            }
+
+            LV_.ItemsSource = sortedQuery.ToList();
+        }
+
 
         public void Update_Dis()
         {

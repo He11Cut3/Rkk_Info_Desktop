@@ -22,6 +22,40 @@
                     <RowDefinition Height="65" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
+                <TextBlock Text="Поиск:"
+                           Style="{StaticResource Button_LV}"
+                           Margin="60,26,675,17" />
+                <TextBlock Text="Сортировать по:"
+                           Style="{StaticResource Button_LV}"
+                           Margin="284,26,379,17" />
+                <ComboBox Width="172"
+                          Foreground="{DynamicResource MaterialDesignBody}"
+                          Height="29"
+                          Margin="421,0,0,0"
+                          HorizontalAlignment="Left"
+                          FontFamily="Montserrat"
+                          SelectionChanged="myComboBox_SelectionChanged"
+                          FontWeight="Medium"
+                          FontSize="16"
+                          x:Name="myComboBox">
+                    <ComboBoxItem>Наименование</ComboBoxItem>
+                    <ComboBoxItem>Имя</ComboBoxItem>
+                    <ComboBoxItem>Фамилия</ComboBoxItem>
+                    <ComboBoxItem>Отчество</ComboBoxItem>
+                    <ComboBoxItem>Должность</ComboBoxItem>
+                    <ComboBoxItem>Дата</ComboBoxItem>
+                    <ComboBoxItem>Статус</ComboBoxItem>
+                </ComboBox>
+                <TextBox x:Name="Finder"
+                         Width="139"
+                         Foreground="{DynamicResource MaterialDesignBody}"
+                         Height="28"
+                         Margin="125,18,0,19"
+                         HorizontalAlignment="Left"
+                         FontFamily="Montserrat"
+                         FontWeight="Medium"
+                         FontSize="16"
+                         TextChanged="Finder_TextChanged" />
                 <ListView x:Name="LV_"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           Grid.Row="1"
@@ -81,30 +115,37 @@
                                                        Style="{StaticResource Button_LV}" />
 
                                         </WrapPanel>
-                                        <materialDesign:PopupBox HorizontalAlignment="Right"
-                                                                 VerticalAlignment="Top"
-                                                                 PlacementMode="BottomAndAlignRightEdges"
-                                                                 StaysOpen="False"
-                                                                 Grid.Column="1"
-                                                                 Width="34">
-                                            <StackPanel>
-                                        <Button x:Name="Vac_Down"
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Content="Скачать"
-                                                HorizontalAlignment="Right"
-                                                        Margin="5,5,5,5"
-                                                        Click="Vac_Down_Click" />
-                                        <Button x:Name="Vac_Del"
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Content="Удалить"
-                                                HorizontalAlignment="Right"
-                                                        Margin="5,5,5,5"
-                                                        Click="Vac_Del_Click" />
+                                        <WrapPanel Orientation="Horizontal"
+                                                   HorizontalAlignment="Right"
+                                                   Margin="5,5,5,5">
+                                            <Button x:Name="Vac_Down"
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    HorizontalAlignment="Right"
+                                                    Margin="5,5,5,5"
+                                                    Click="Vac_Down_Click">
+                                                <materialDesign:PackIcon Kind="Download" />
+                                            </Button>
+                                            <materialDesign:PopupBox HorizontalAlignment="Right"
+                                                                     VerticalAlignment="Center"
+                                                                     PlacementMode="BottomAndAlignRightEdges"
+                                                                     StaysOpen="False"
+                                                                     Grid.Column="1"
+                                                                     Width="34">
+                                                <StackPanel>
+                                                    
+                                                    <Button x:Name="Vac_Del"
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Content="Удалить"
+                                                            HorizontalAlignment="Right"
+                                                            Margin="5,5,5,5"
+                                                            Click="Vac_Del_Click" />
 
-                                            </StackPanel>
-                                        </materialDesign:PopupBox>
+                                                </StackPanel>
+                                            </materialDesign:PopupBox>
+                                        </WrapPanel>
                                     </StackPanel>
                                 </Grid>
                             </Border>

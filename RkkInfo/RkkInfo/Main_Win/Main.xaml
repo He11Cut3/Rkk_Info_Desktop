@@ -44,7 +44,7 @@
                            Source="Images/Logo.png"
                            Height="30"
                            Width="30" />
-                    <TextBlock Text="Ркк 'Инфо'"
+                    <TextBlock Text="РКК 'Инфо'"
                                FontSize="20"
                                FontWeight="Bold"
                                HorizontalAlignment="Left"
@@ -160,13 +160,6 @@
                                           Padding="25 0"
                                           Margin="0 0 20 0" />
             </StackPanel>
-            <Button x:Name="Add_Employ"
-                    Foreground="Transparent"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Margin="18,22,137,10"
-                    Click="Add_Employ_Click" />
-
             <StackPanel Margin="10,4,0,0"
                         Grid.Column="1"
                         Grid.Row="1" />
@@ -240,7 +233,10 @@
                                       IsChecked="{Binding IsDarkTheme}"
                                       Click="toggleTheme" />
                     </StackPanel>
-
+                    <Button x:Name="Add_Employ"
+                            Content="Отдел и должность"
+                            Margin="0 8 0 0"
+                            Click="Add_Employ_Click" />
                     <Button ToolTip="FAQ"
                             x:Name="FAQ"
                             Margin="0 8 0 0"

@@ -40,6 +40,39 @@ namespace RkkInfo.Files_Rkk
             LV_.ItemsSource = _list;
         }
 
+        private void Finder_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = Finder.Text;
+            var query = from emp in _context.RkkInfo_Files
+                        where emp.RkkInfo_Files_Name.Contains(searchText)
+                            || emp.RkkInfo_Files_Data.Contains(searchText)
+                        select emp;
+
+            LV_.ItemsSource = query.ToList();
+        }
+
+        private void myComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedValue = ((ComboBoxItem)myComboBox.SelectedItem).Content.ToString();
+
+            var sortedQuery = from emp in _context.RkkInfo_Files
+                              select emp;
+
+            switch (selectedValue)
+            {
+                case "Имя":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Files_Name);
+                    break;
+                case "Дата":
+                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Files_Data);
+                    break;
+                default:
+                    break;
+            }
+
+            LV_.ItemsSource = sortedQuery.ToList();
+        }
+
         private void Vac_Files_Click(object sender, RoutedEventArgs e)
         {
             // Получаем кнопку, на которую нажали

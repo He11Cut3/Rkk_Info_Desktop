@@ -35,9 +35,9 @@
                                     Orientation="Horizontal"
                                     HorizontalAlignment="Center">
                             <TextBlock  VerticalAlignment="Center"
-                                        Text="Dark Mode" />
+                                        Text="Тёмная тема" />
                             <ToggleButton Cursor="Hand"
-                                          ToolTip="Включение темного режима111111"
+                                          ToolTip="Включение темного режима"
                                           Margin="12 0 8 0"
                                           x:Name="themeToggle"
                                           IsChecked="{Binding IsDarkTheme}"

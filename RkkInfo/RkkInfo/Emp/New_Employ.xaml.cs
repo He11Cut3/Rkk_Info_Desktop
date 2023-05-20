@@ -62,21 +62,37 @@ namespace RkkInfo.Emp
                 }
                 else
                 {
+                    string lastName = Last_Name.Text;
+                    string firstName = First_Name.Text;
+                    string patronymic = Patronymic.Text;
+
+                    // Проверка наличия сотрудников с таким же именем, фамилией и отчеством
+                    int count = _context.RkkInfo_Employees
+                        .Count(A => A.RkkInfo_Employees_Last_Name == lastName &&
+                                    A.RkkInfo_Employees_First_Name == firstName &&
+                                    A.RkkInfo_Employees_Patronymic == patronymic);
+
+                    if (count > 0)
+                    {
+                        // Добавление к фамилии символа "_" и идентификатора
+                        lastName += "_" + count;
+                    }
+
                     _context.RkkInfo_Employees.Add(new RkkInfo_Employees()
                     {
-                        RkkInfo_Employees_First_Name = First_Name.Text,
-                        RkkInfo_Employees_Last_Name = Last_Name.Text,
+                        RkkInfo_Employees_First_Name = firstName,
+                        RkkInfo_Employees_Last_Name = lastName,
                         RkkInfo_Employees_Patronymic = Patronymic.Text,
                         RkkInfo_Employees_Position = Position.Text,
                         RkkInfo_Employees_Department = _branchName,
                         RkkInfo_Employees_Start_Date = Date.SelectedDate?.ToString("dd.MM.yyyy"),
                         RkkInfo_Employees_Is_Active = (myComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString(),
-                });
+                    });
+
                     _context.SaveChanges();
                     _uc.Update_Emp();
                     this.Close();
                 }
-               
             }
         }
         private void ComeBack_Click(object sender, RoutedEventArgs e)

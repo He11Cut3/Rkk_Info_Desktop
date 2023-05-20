@@ -108,45 +108,53 @@ namespace RkkInfo.Emp
 
         private void Finder_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string searchText = Finder.Text;
-            var query = from emp in _context.RkkInfo_Employees
-                        where emp.RkkInfo_Employees_Last_Name.Contains(searchText)
-                            || emp.RkkInfo_Employees_First_Name.Contains(searchText)
-                            || emp.RkkInfo_Employees_Patronymic.Contains(searchText)
-                            || emp.RkkInfo_Employees_Position.Contains(searchText)
-                            || emp.RkkInfo_Employees_Department.Contains(searchText)
-                            || emp.RkkInfo_Employees_Is_Active.Contains(searchText)
-                        select emp;
-
-            LV_.ItemsSource = query.ToList();
+            ApplyFilters();
         }
 
         private void myComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ApplyFilters();
+        }
+        private void ApplyFilters()
+        {
             string selectedValue = ((ComboBoxItem)myComboBox.SelectedItem).Content.ToString();
+            string searchText = Finder.Text.ToLower();
 
-            var sortedQuery = from emp in _context.RkkInfo_Employees
-                              select emp;
+            var filteredQuery = from emp in _context.RkkInfo_Employees
+                                where emp.RkkInfo_Employees_Department.Contains(_branchName)
+                                      && (string.IsNullOrEmpty(searchText)
+                                          || emp.RkkInfo_Employees_Last_Name.ToLower().Contains(searchText)
+                                          || emp.RkkInfo_Employees_First_Name.ToLower().Contains(searchText)
+                                          || emp.RkkInfo_Employees_Patronymic.ToLower().Contains(searchText)
+                                          || emp.RkkInfo_Employees_Position.ToLower().Contains(searchText)
+                                          || emp.RkkInfo_Employees_Department.ToLower().Contains(searchText)
+                                          || emp.RkkInfo_Employees_Is_Active.ToLower().Contains(searchText))
+                                select emp;
 
-            switch (selectedValue)
+            var sortedQuery = filteredQuery;
+
+            if (FilterCheckBox.IsChecked == true)
             {
-                case "Фамилия":
-                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Employees_Last_Name);
-                    break;
-                case "Имя":
-                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Employees_First_Name);
-                    break;
-                case "Отчество":
-                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Employees_Patronymic);
-                    break;
-                case "Должность":
-                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Employees_Position);
-                    break;
-                case "Статус":
-                    sortedQuery = sortedQuery.OrderBy(emp => emp.RkkInfo_Employees_Is_Active);
-                    break;
-                default:
-                    break;
+                switch (selectedValue)
+                {
+                    case "Фамилия":
+                        sortedQuery = filteredQuery.OrderBy(emp => emp.RkkInfo_Employees_Last_Name);
+                        break;
+                    case "Имя":
+                        sortedQuery = filteredQuery.OrderBy(emp => emp.RkkInfo_Employees_First_Name);
+                        break;
+                    case "Отчество":
+                        sortedQuery = filteredQuery.OrderBy(emp => emp.RkkInfo_Employees_Patronymic);
+                        break;
+                    case "Должность":
+                        sortedQuery = filteredQuery.OrderBy(emp => emp.RkkInfo_Employees_Position);
+                        break;
+                    case "Статус":
+                        sortedQuery = filteredQuery.OrderBy(emp => emp.RkkInfo_Employees_Is_Active);
+                        break;
+                    default:
+                        break;
+                }
             }
 
             LV_.ItemsSource = sortedQuery.ToList();

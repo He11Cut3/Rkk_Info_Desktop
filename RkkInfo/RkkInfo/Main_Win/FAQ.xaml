@@ -95,10 +95,11 @@
                        Height="22"
                        Margin="30,35,0,0"
                        Width="370" />
-            <TextBlock Text="Приложение поддерживает файлы формата - '.pfd', '.docx'."
+            <TextBlock Text="Приложение поддерживает файлы формата - '.pfd', '.docx'. В разделе 'Файлы' - поддерживаются различные файлы (не зависимо от их формата)."
+                       TextWrapping="Wrap"
                        HorizontalAlignment="Left"
                        Style="{StaticResource Button_LV}"
-                       Height="22"
+                       Height="58"
                        Margin="30,35,0,0"
                        Width="628" />
             <TextBlock Text="Не правильно ввёл данные, что с ними делать?"

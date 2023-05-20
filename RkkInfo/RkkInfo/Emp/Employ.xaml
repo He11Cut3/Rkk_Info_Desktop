@@ -30,6 +30,10 @@
                         HorizontalAlignment="Right"
                         Margin="10,10,10,10"
                         Click="New_Emp_Click" />
+                
+                <TextBlock Text="Фильтрация:"
+                           Style="{StaticResource Button_LV}"
+                           Margin="314,0,385,39" />
                 <TextBlock Text="Поиск:"
                            Style="{StaticResource Button_LV}"
                            Margin="60,26,675,17" />
@@ -148,7 +152,8 @@
                             Grid.Row="1"
                             HorizontalAlignment="Center"
                             Width="0" />
-
+                <CheckBox  x:Name="FilterCheckBox"
+                           Margin="416,0,0,44" />
 
             </Grid>
         </Grid>
